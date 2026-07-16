@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Local Lab · Bonus Kit — Hermes Masterclass</title>
+<link rel="icon" href="raw-images/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Newsreader:ital,wght@1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#07080f; --card:#12162a; --card-2:#181d36; --ui:#1b2140; --border:#2c3560; --border-2:#3d4878;
+    --text:#f4f4f5; --muted:#b6bac9; --dim:#8590ad; --faint:#5d6786;
+    --hermes:#4b5cff; --hermes-2:#8fa3ff; --glow:rgba(75,92,255,0.4);
+    --amber:#f0b441; --gold:#facc15; --green-2:#4ade80; --red:#ef4444; --p4:#2dd4bf;
+    --accent:var(--hermes-2);
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html { scroll-behavior:smooth; }
+  html::before { content:''; position:fixed; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg, #2845ff, var(--hermes-2), #ffffff, var(--hermes-2), #2845ff); z-index:300; }
+  body { font-family:'Inter',-apple-system,sans-serif; background:var(--bg); color:var(--text); line-height:1.55; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+  body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E"); opacity:0.03; pointer-events:none; z-index:100; mix-blend-mode:overlay; }
+  body::after { content:''; position:fixed; inset:0; background: radial-gradient(1000px at 18% -5%, rgba(75,92,255,0.2), transparent 55%), radial-gradient(900px at 85% 40%, rgba(45,212,191,0.08), transparent 55%), radial-gradient(800px at 50% 108%, rgba(75,92,255,0.14), transparent 60%); pointer-events:none; z-index:0; }
+  @keyframes fadeInUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
+  @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.4; } }
+
+  .wrap { position:relative; z-index:2; max-width:920px; margin:0 auto; padding:44px 28px 90px; }
+  .top { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:34px; }
+  .top a { font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); text-decoration:none; border:1px solid var(--border); padding:8px 14px; border-radius:100px; }
+  .top a:hover { color:var(--text); border-color:var(--border-2); }
+  .top .badge { font-family:'JetBrains Mono',monospace; font-size:10.5px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--hermes-2); background:rgba(75,92,255,0.12); border:1px solid rgba(75,92,255,0.45); padding:7px 13px; border-radius:100px; box-shadow:0 0 26px -6px var(--glow); }
+
+  .hero { text-align:center; margin-bottom:30px; animation:fadeInUp 0.7s ease-out; position:relative; }
+  .hero::before { content:''; position:absolute; top:-80px; left:50%; transform:translateX(-50%); width:640px; height:340px; max-width:92vw; background:radial-gradient(ellipse at center, rgba(75,92,255,0.22), transparent 65%); pointer-events:none; filter:blur(12px); z-index:-1; }
+  .eyebrow { display:inline-flex; align-items:center; gap:11px; margin-bottom:14px; font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:var(--green-2); }
+  .eyebrow .l { width:30px; height:1px; background:linear-gradient(90deg,transparent,var(--green-2)); }
+  .eyebrow .r { width:30px; height:1px; background:linear-gradient(90deg,var(--green-2),transparent); }
+  h1 { font-size:clamp(38px,7vw,66px); font-weight:900; letter-spacing:-0.04em; line-height:0.98; background:linear-gradient(120deg,#ffffff 10%, var(--hermes-2) 55%, var(--hermes) 95%); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; filter:drop-shadow(0 8px 36px rgba(75,92,255,0.3)); }
+  h1 em { font-family:'Newsreader',Georgia,serif; font-style:italic; font-weight:600; }
+  .sub { font-family:'Newsreader',Georgia,serif; font-style:italic; font-size:clamp(15px,2vw,19px); color:#c7cbd8; margin:14px auto 0; max-width:600px; }
+
+  .art { position:relative; border-radius:20px; overflow:hidden; margin:40px auto 0; border:1px solid var(--border); box-shadow:0 30px 90px -30px rgba(0,0,0,0.9), 0 0 60px -18px var(--glow), inset 0 1px 0 rgba(255,255,255,0.06); }
+  .art img { width:100%; display:block; }
+
+  .sec { margin-top:84px; animation:fadeInUp 0.6s ease-out both; }
+  .sec-tag { display:inline-flex; align-items:center; gap:8px; font-family:'JetBrains Mono',monospace; font-size:10.5px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--accent); padding:6px 12px; border:1px solid color-mix(in oklab,var(--accent) 40%,transparent); border-radius:100px; background:color-mix(in oklab,var(--accent) 10%,transparent); margin-bottom:14px; }
+  .sec-tag .dot { width:6px; height:6px; border-radius:50%; background:var(--accent); animation:pulse 2s infinite; }
+  .sec h2 { font-size:clamp(23px,3.6vw,34px); font-weight:800; letter-spacing:-0.025em; line-height:1.06; margin-bottom:9px; color:#fff; }
+  .sec h2 em { font-family:'Newsreader',serif; font-style:italic; font-weight:600; color:var(--accent); }
+  .sec .lead { font-size:14.5px; color:#b9bdc9; max-width:640px; margin-bottom:22px; }
+  .sec .lead b { color:#fff; }
+
+  /* mode cards */
+  .modes { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:26px; }
+  @media (max-width:760px){ .modes { grid-template-columns:1fr; } }
+  .mode { background:linear-gradient(180deg, color-mix(in oklab, var(--mc) 11%, var(--card-2)), var(--card)); border:1px solid color-mix(in oklab, var(--mc) 40%, var(--border)); border-radius:16px; padding:20px; box-shadow:0 18px 40px -28px color-mix(in oklab, var(--mc) 60%, transparent), inset 0 1px 0 rgba(255,255,255,0.06); transition:transform .2s; }
+  .mode:hover { transform:translateY(-3px); }
+  .mode .me { font-size:24px; } .mode h5 { font-size:16px; font-weight:800; margin-top:8px; color:#fff; }
+  .mode .mw { font-family:'Newsreader',serif; font-style:italic; font-size:12.5px; color:var(--mc); margin-top:2px; }
+  .mode p { font-size:12.5px; color:var(--muted); line-height:1.55; margin-top:9px; }
+  .mode .tag { display:inline-block; margin-top:11px; font-family:'JetBrains Mono',monospace; font-size:9.5px; letter-spacing:0.07em; text-transform:uppercase; color:var(--mc); border:1px solid color-mix(in oklab, var(--mc) 40%, transparent); padding:4px 10px; border-radius:100px; }
+
+  /* ===== THE SLIDER ===== */
+  .rig { margin-top:26px; background:linear-gradient(180deg, var(--card-2), var(--card)); border:1px solid var(--border-2); border-radius:22px; padding:30px 28px; box-shadow:0 26px 70px -34px rgba(0,0,0,0.95), 0 0 70px -24px var(--glow), inset 0 1px 0 rgba(255,255,255,0.07); }
+  .rig .rtop { display:flex; align-items:baseline; justify-content:space-between; gap:14px; flex-wrap:wrap; }
+  .rig .rlab { font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--dim); }
+  .rig .rgb { font-size:clamp(40px,6vw,58px); font-weight:900; letter-spacing:-0.04em; line-height:1; color:#fff; }
+  .rig .rgb span { font-size:0.45em; color:var(--hermes-2); font-weight:700; }
+  .rig input[type=range] { width:100%; margin:26px 0 8px; -webkit-appearance:none; appearance:none; height:10px; border-radius:6px; background:linear-gradient(90deg, #2c3560, var(--hermes) 60%, var(--hermes-2)); outline:none; cursor:pointer; }
+  .rig input[type=range]::-webkit-slider-thumb { -webkit-appearance:none; appearance:none; width:30px; height:30px; border-radius:50%; background:#fff; border:4px solid var(--hermes); box-shadow:0 0 24px -2px var(--hermes-2); cursor:grab; }
+  .rig input[type=range]::-moz-range-thumb { width:26px; height:26px; border-radius:50%; background:#fff; border:4px solid var(--hermes); box-shadow:0 0 24px -2px var(--hermes-2); cursor:grab; }
+  .rig .ticks { display:flex; justify-content:space-between; font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--faint); margin-bottom:22px; }
+  .rig .rtier { display:flex; align-items:center; gap:12px; flex-wrap:wrap; padding-top:18px; border-top:1px solid var(--border); }
+  .rig .rtemo { font-size:30px; line-height:1; filter:drop-shadow(0 0 14px rgba(75,92,255,0.5)); }
+  .rig .rtname { font-size:20px; font-weight:800; color:var(--green-2); }
+  .rig .rtctx { font-family:'JetBrains Mono',monospace; font-size:10.5px; color:var(--dim); border:1px solid var(--border); border-radius:100px; padding:5px 11px; }
+  .rig .rdesc { font-size:13.5px; color:var(--muted); line-height:1.6; margin-top:10px; max-width:640px; }
+  .rig .rchips { display:flex; flex-wrap:wrap; gap:9px; margin-top:16px; }
+  .rchip { display:inline-flex; align-items:center; gap:9px; background:var(--ui); border:1px solid var(--border); border-radius:12px; padding:9px 13px; transition:border-color .2s, transform .2s; }
+  .rchip:hover { transform:translateY(-2px); border-color:var(--border-2); }
+  .rchip img { width:20px; height:20px; object-fit:contain; border-radius:5px; background:rgba(255,255,255,0.07); padding:2px; }
+  .rchip b { font-size:12.5px; color:#fff; }
+  .rchip code { font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--green-2); }
+  .rchip.star { border-color:color-mix(in oklab, var(--green-2) 55%, var(--border)); box-shadow:0 0 22px -8px var(--green-2); }
+  .rig .rnote { margin-top:18px; font-size:12px; color:var(--dim); }
+  .rig .rnote b { color:var(--muted); }
+
+  /* time machine + modern relative */
+  .timecmp { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:20px; }
+  @media (max-width:720px){ .timecmp { grid-template-columns:1fr; } }
+  .tc { position:relative; border-radius:16px; padding:18px 20px; padding-right:64px; overflow:hidden; }
+  .tc.time { background:linear-gradient(130deg, rgba(240,180,65,.13), var(--card)); border:1px solid rgba(240,180,65,.42); box-shadow:0 18px 44px -28px rgba(240,180,65,.55), inset 0 1px 0 rgba(255,255,255,.06); }
+  .tc.now { background:linear-gradient(130deg, rgba(75,92,255,.16), var(--card)); border:1px solid rgba(75,92,255,.5); box-shadow:0 18px 44px -28px var(--glow), inset 0 1px 0 rgba(255,255,255,.06); }
+  .tc .tk { font-family:'JetBrains Mono',monospace; font-size:9.5px; font-weight:700; letter-spacing:0.13em; text-transform:uppercase; }
+  .tc.time .tk { color:var(--amber); } .tc.now .tk { color:var(--hermes-2); }
+  .tc .big { font-size:17.5px; font-weight:800; color:#fff; margin:8px 0 6px; line-height:1.25; }
+  .tc .big em { font-family:'Newsreader',serif; font-style:italic; font-weight:600; }
+  .tc.time .big em { color:var(--amber); } .tc.now .big em { color:var(--hermes-2); }
+  .tc .note { font-size:12px; color:var(--muted); line-height:1.55; }
+  .tc .lg { position:absolute; top:15px; right:16px; display:flex; gap:6px; }
+  .tc .lg img { width:28px; height:28px; object-fit:contain; border-radius:8px; background:rgba(255,255,255,.08); padding:4px; border:1px solid rgba(255,255,255,.14); }
+
+  /* pick cards */
+  .pick { background:var(--card); border:1px solid var(--border); border-radius:16px; margin-top:16px; overflow:hidden; box-shadow:0 20px 48px -28px rgba(0,0,0,0.95), inset 0 1px 0 rgba(255,255,255,0.06); transition:border-color .2s; }
+  .pick:hover { border-color:color-mix(in oklab, var(--pc) 55%, var(--border)); }
+  .pick .ph { display:flex; align-items:center; gap:13px; padding:16px 19px; background:linear-gradient(120deg, color-mix(in oklab, var(--pc) 18%, var(--card-2)), var(--card)); border-bottom:1px solid var(--border); flex-wrap:wrap; }
+  .pick .pi { width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center; background:color-mix(in oklab, var(--pc) 16%, transparent); border:1px solid color-mix(in oklab, var(--pc) 40%, transparent); box-shadow:0 0 22px -6px color-mix(in oklab, var(--pc) 75%, transparent); }
+  .pick .pi img { width:26px; height:26px; object-fit:contain; }
+  .pick .pt .k { font-family:'JetBrains Mono',monospace; font-size:9.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--pc); }
+  .pick .pt b { display:block; font-size:16.5px; font-weight:800; color:#fff; }
+  .pick .pm { margin-left:auto; display:flex; gap:6px; flex-wrap:wrap; }
+  .pick .pm span { font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--dim); border:1px solid var(--border); padding:4px 10px; border-radius:100px; }
+  .pick .pm span.hot { color:var(--green-2); border-color:color-mix(in oklab, var(--green-2) 45%, var(--border)); }
+  .pick .pb { padding:15px 19px; }
+  .pick .pb p { font-size:13px; color:var(--muted); line-height:1.6; } .pick .pb p b { color:#fff; }
+  .pick .cmd { display:flex; align-items:center; gap:10px; margin-top:12px; background:#0b0e1d; border:1px solid var(--border); border-radius:10px; padding:10px 13px; font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--green-2); overflow-x:auto; }
+  .pick .cmd .d { color:var(--faint); }
+  .logorow { display:flex; gap:9px; margin-top:12px; }
+  .logorow img { width:28px; height:28px; object-fit:contain; border-radius:7px; background:rgba(255,255,255,0.07); padding:4px; border:1px solid var(--border); }
+
+  /* champion strips (03) */
+  .champs { display:flex; flex-direction:column; gap:14px; margin-top:26px; }
+  .champ { position:relative; display:grid; grid-template-columns:auto auto 1fr auto; gap:20px; align-items:center; background:linear-gradient(120deg, color-mix(in oklab, var(--cc) 13%, var(--card-2)), var(--card)); border:1px solid color-mix(in oklab, var(--cc) 45%, var(--border)); border-left:4px solid var(--cc); border-radius:18px; padding:20px 24px; box-shadow:0 22px 54px -30px color-mix(in oklab, var(--cc) 55%, transparent), inset 0 1px 0 rgba(255,255,255,0.06); transition:transform .2s; }
+  .champ:hover { transform:translateX(5px); }
+  @media (max-width:780px){ .champ { grid-template-columns:auto auto 1fr; } .champ .ccmd { grid-column:1/-1; align-items:flex-start; } }
+  .champ .cnum { font-family:'JetBrains Mono',monospace; font-size:clamp(30px,4.4vw,44px); font-weight:700; color:color-mix(in oklab, var(--cc) 80%, #fff); opacity:.95; line-height:1; }
+  .champ .cico { width:60px; height:60px; border-radius:16px; display:flex; align-items:center; justify-content:center; background:color-mix(in oklab, var(--cc) 17%, transparent); border:1px solid color-mix(in oklab, var(--cc) 45%, transparent); box-shadow:0 0 28px -6px var(--cc); flex-shrink:0; }
+  .champ .cico img { width:34px; height:34px; object-fit:contain; }
+  .champ .ct .ck { font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.13em; text-transform:uppercase; color:var(--cc); }
+  .champ .ct b { display:block; font-size:19px; font-weight:800; color:#fff; margin:2px 0 4px; }
+  .champ .ct p { font-size:12.5px; color:var(--muted); line-height:1.5; }
+  .champ .ccmd { display:flex; flex-direction:column; gap:8px; align-items:flex-end; }
+  .champ .ccmd .pill { font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--cc); border:1px solid color-mix(in oklab, var(--cc) 45%, transparent); padding:4px 11px; border-radius:100px; white-space:nowrap; }
+  .champ .ccmd code { font-family:'JetBrains Mono',monospace; font-size:11.5px; color:var(--green-2); background:#0b0e1d; border:1px solid var(--border); border-radius:9px; padding:8px 13px; cursor:pointer; transition:all .15s; }
+  .champ .ccmd code:hover { border-color:var(--green-2); box-shadow:0 0 16px -6px var(--green-2); }
+
+  /* size-ladder chart (04) */
+  .chart { margin-top:26px; background:linear-gradient(180deg, var(--card-2), var(--card)); border:1px solid var(--border-2); border-radius:20px; padding:26px 24px 18px; box-shadow:0 26px 70px -34px rgba(0,0,0,.95), inset 0 1px 0 rgba(255,255,255,.07); }
+  .chart .chead { display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:8px; margin-bottom:16px; }
+  .chart .chead .t { font-size:15px; font-weight:800; color:#fff; }
+  .chart .chead .s { font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--dim); }
+  .crow { display:grid; grid-template-columns:150px 1fr; gap:14px; align-items:center; padding:9px 0; border-bottom:1px solid rgba(255,255,255,.045); }
+  @media (max-width:640px){ .crow { grid-template-columns:104px 1fr; } }
+  .crow .cfam { display:flex; align-items:center; gap:9px; }
+  .crow .cfam img { width:24px; height:24px; object-fit:contain; border-radius:6px; background:rgba(255,255,255,.07); padding:3px; flex-shrink:0; }
+  .crow .cfam b { font-size:12.5px; color:#fff; line-height:1.2; }
+  .crow .cfam b span { display:block; font-family:'JetBrains Mono',monospace; font-size:9px; font-weight:400; color:var(--dim); }
+  .ctrack { position:relative; height:36px; }
+  .ctrack::before { content:''; position:absolute; left:0; right:0; top:50%; height:2px; background:rgba(255,255,255,.07); }
+  .cdot { position:absolute; top:50%; transform:translate(-50%,-50%); border-radius:50%; background:var(--dc); box-shadow:0 0 16px -2px var(--dc); cursor:pointer; transition:left .7s cubic-bezier(0.22,0.85,0.25,1), transform .15s, opacity .35s, box-shadow .35s; }
+  .cdot:hover { transform:translate(-50%,-50%) scale(1.4); z-index:6; }
+  .cdot.dim { opacity:.15; box-shadow:none; }
+  .cdot.star { border:2px solid #fff; }
+  .cdot::after { content:attr(data-tip); position:absolute; bottom:calc(100% + 9px); left:50%; transform:translateX(-50%); background:#0b0e1d; border:1px solid var(--border-2); color:#fff; font-family:'JetBrains Mono',monospace; font-size:10px; padding:5px 10px; border-radius:7px; white-space:nowrap; opacity:0; pointer-events:none; transition:opacity .15s; z-index:10; }
+  .cdot:hover::after { opacity:1; }
+  .csweet { position:absolute; top:3px; bottom:3px; left:0; border-radius:8px; background:linear-gradient(90deg, rgba(74,222,128,.03), rgba(74,222,128,.1)); border-right:2px solid rgba(74,222,128,.65); pointer-events:none; transition:width .5s cubic-bezier(0.22,0.85,0.25,1); }
+  .chart.pw .csweet { opacity:0; }
+  .cswitch { display:inline-flex; gap:4px; background:rgba(255,255,255,.05); border:1px solid var(--border); border-radius:100px; padding:3px; }
+  .cbtn { font-family:'JetBrains Mono',monospace; font-size:10.5px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--dim); background:transparent; border:none; border-radius:100px; padding:6px 16px; cursor:pointer; transition:all .2s; }
+  .cbtn.on { color:#07080f; background:var(--hermes-2); box-shadow:0 0 18px -6px var(--hermes-2); }
+  .cmini { display:inline-flex; align-items:center; gap:10px; }
+  .cmini .ml { font-family:'JetBrains Mono',monospace; font-size:9.5px; letter-spacing:0.09em; text-transform:uppercase; color:var(--dim); }
+  .cmini input[type=range] { -webkit-appearance:none; appearance:none; width:160px; height:6px; border-radius:4px; background:linear-gradient(90deg, #2c3560, var(--hermes) 60%, var(--hermes-2)); outline:none; cursor:pointer; }
+  .cmini input[type=range]::-webkit-slider-thumb { -webkit-appearance:none; appearance:none; width:18px; height:18px; border-radius:50%; background:#fff; border:3px solid var(--hermes); box-shadow:0 0 14px -2px var(--hermes-2); cursor:grab; }
+  .cmini input[type=range]::-moz-range-thumb { width:16px; height:16px; border-radius:50%; background:#fff; border:3px solid var(--hermes); cursor:grab; }
+  .cmini b { font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--green-2); white-space:nowrap; }
+  .caxis.pwax { display:none; }
+  .chart.pw .caxis.szax { display:none; }
+  .chart.pw .caxis.pwax { display:block; }
+  .caxisrow { display:grid; grid-template-columns:150px 1fr; gap:14px; }
+  @media (max-width:640px){ .caxisrow { grid-template-columns:104px 1fr; } }
+  .caxis { position:relative; height:20px; margin-top:4px; }
+  .caxis span { position:absolute; transform:translateX(-50%); font-family:'JetBrains Mono',monospace; font-size:9.5px; color:var(--faint); }
+  .cfoot { margin-top:14px; padding-top:14px; border-top:1px solid var(--border); display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; font-size:11.5px; color:var(--dim); }
+  .cfoot .sync { color:var(--green-2); font-family:'JetBrains Mono',monospace; font-size:10.5px; }
+
+  /* families wall */
+  .fams { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-top:26px; }
+  @media (max-width:680px){ .fams { grid-template-columns:1fr; } }
+  .fam { display:flex; align-items:center; gap:14px; background:var(--card); border:1px solid var(--border); border-radius:14px; padding:16px 18px; box-shadow:inset 0 1px 0 rgba(255,255,255,0.05); transition:transform .2s, border-color .2s; }
+  .fam:hover { transform:translateY(-2px); border-color:var(--border-2); }
+  .fam img { width:34px; height:34px; object-fit:contain; border-radius:9px; background:rgba(255,255,255,0.07); padding:5px; border:1px solid var(--border); flex-shrink:0; }
+  .fam b { font-size:14.5px; color:#fff; display:block; }
+  .fam span { font-size:12px; color:var(--muted); line-height:1.45; display:block; margin-top:2px; }
+
+  /* spectrum bands */
+  .bands { display:grid; grid-template-columns:repeat(4,1fr); gap:11px; margin-top:26px; }
+  @media (max-width:820px){ .bands { grid-template-columns:1fr 1fr; } }
+  @media (max-width:480px){ .bands { grid-template-columns:1fr; } }
+  .band { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:17px 15px; border-top:3px solid var(--bc); box-shadow:inset 0 1px 0 rgba(255,255,255,0.05); }
+  .band .bk { font-family:'JetBrains Mono',monospace; font-size:9.5px; letter-spacing:0.09em; text-transform:uppercase; color:var(--bc); }
+  .band h5 { font-size:14.5px; font-weight:800; color:#fff; margin:5px 0 7px; }
+  .band p { font-size:11.5px; color:var(--muted); line-height:1.5; }
+  .band .blg { display:flex; gap:6px; margin-top:11px; }
+  .band .blg img { width:20px; height:20px; object-fit:contain; border-radius:5px; background:rgba(255,255,255,0.07); padding:2px; }
+
+  /* traps */
+  .traps { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:26px; }
+  @media (max-width:720px){ .traps { grid-template-columns:1fr; } }
+  .trap { background:var(--card); border:1px solid color-mix(in oklab, var(--red) 30%, var(--border)); border-radius:16px; padding:20px; box-shadow:0 20px 48px -28px rgba(0,0,0,0.95), inset 0 1px 0 rgba(255,255,255,0.06); }
+  .trap .th { display:flex; align-items:center; gap:10px; margin-bottom:10px; }
+  .trap .ti { width:36px; height:36px; border-radius:10px; background:rgba(239,68,68,0.14); border:1px solid rgba(239,68,68,0.4); display:flex; align-items:center; justify-content:center; font-size:17px; }
+  .trap h5 { font-size:15px; font-weight:800; color:#fff; }
+  .trap p { font-size:12.5px; color:var(--muted); line-height:1.55; } .trap p b { color:#fca5a5; }
+  .trap .fix { margin-top:12px; padding:10px 13px; background:rgba(74,222,128,0.07); border:1px solid rgba(74,222,128,0.3); border-radius:10px; font-size:12px; color:var(--muted); }
+  .trap .fix b { color:var(--green-2); } .trap .fix code { font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--amber); }
+  .tbars { margin:12px 0 2px; }
+  .tbars .tb1 { height:12px; border-radius:5px; background:linear-gradient(90deg,#2845ff,var(--hermes-2)); }
+  .tbars .tb2 { height:12px; width:1.6%; min-width:7px; border-radius:5px; background:var(--red); margin-top:6px; }
+  .tbars .tl { display:flex; justify-content:space-between; font-family:'JetBrains Mono',monospace; font-size:9.5px; color:var(--dim); margin-top:6px; }
+
+  /* code */
+  .code { position:relative; background:#0b0e1d; border:1px solid var(--border); border-radius:14px; overflow:hidden; margin-top:26px; box-shadow:0 20px 48px -28px rgba(0,0,0,0.95), inset 0 1px 0 rgba(255,255,255,0.05); }
+  .code .bar { display:flex; align-items:center; gap:8px; padding:10px 14px; background:linear-gradient(180deg,#232a4d,#1b2140); border-bottom:1px solid var(--border); }
+  .code .bar .dots { display:flex; gap:6px; } .code .bar .dots span { width:9px; height:9px; border-radius:50%; background:var(--border-2); }
+  .code .bar .t { font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--dim); margin-left:2px; }
+  .copy { margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:10.5px; font-weight:700; letter-spacing:0.06em; color:var(--text); background:rgba(255,255,255,0.1); border:1px solid var(--border-2); border-radius:7px; padding:5px 12px; cursor:pointer; transition:all .15s; }
+  .copy:hover { background:rgba(255,255,255,0.16); box-shadow:0 0 18px -5px var(--hermes-2); }
+  .copy.ok { color:var(--bg); background:var(--green-2); border-color:var(--green-2); }
+  .code pre { margin:0; padding:16px 17px; font-family:'JetBrains Mono',monospace; font-size:12.5px; line-height:1.85; color:#eef0f7; overflow-x:auto; }
+  .cmt { color:#66719a; } .pr { color:#5eea9a; } .fl { color:#ffc857; } .st { color:#8fa3ff; }
+
+  /* link chips */
+  .links { display:flex; flex-wrap:wrap; gap:9px; margin-top:22px; }
+  .lk { display:inline-flex; align-items:center; gap:9px; font-family:'JetBrains Mono',monospace; font-size:11.5px; font-weight:700; color:var(--text); background:rgba(255,255,255,0.06); border:1px solid var(--border-2); padding:10px 17px; border-radius:100px; text-decoration:none; transition:all .15s; }
+  .lk img { width:18px; height:18px; object-fit:contain; }
+  .lk:hover { border-color:var(--hermes-2); color:var(--hermes-2); transform:translateY(-1px); box-shadow:0 0 20px -8px var(--hermes-2); }
+
+  .callout { margin-top:26px; display:flex; gap:14px; padding:17px 19px; border-radius:13px; background:rgba(240,180,65,0.08); border:1px solid rgba(240,180,65,0.38); box-shadow:inset 0 1px 0 rgba(255,255,255,0.04); }
+  .callout .ic { flex-shrink:0; width:32px; height:32px; border-radius:9px; background:rgba(240,180,65,0.16); display:flex; align-items:center; justify-content:center; font-size:16px; }
+  .callout .h { font-weight:700; font-size:13.5px; margin-bottom:3px; color:#fff; }
+  .callout p { font-size:12.5px; color:var(--muted); line-height:1.55; }
+  .callout code { font-family:'JetBrains Mono',monospace; font-size:11.5px; background:rgba(255,255,255,0.07); padding:1px 6px; border-radius:4px; color:var(--amber); }
+
+  .sowhat { margin:64px auto 0; display:flex; align-items:flex-start; gap:15px; padding:18px 21px; border-radius:14px; background:color-mix(in oklab, var(--hermes) 12%, var(--card)); border:1px solid color-mix(in oklab, var(--hermes) 45%, var(--border)); box-shadow:0 0 40px -14px var(--glow); }
+  .sowhat .swl { flex-shrink:0; margin-top:2px; font-family:'JetBrains Mono',monospace; font-size:10.5px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--hermes-2); white-space:nowrap; }
+  .sowhat p { font-size:13.5px; color:#e8eaf2; line-height:1.6; } .sowhat p b { color:var(--hermes-2); }
+  .sowhat p code { font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--amber); background:rgba(255,255,255,0.06); padding:1px 6px; border-radius:4px; }
+
+  .foot { text-align:center; margin-top:64px; color:var(--dim); font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:0.08em; }
+  .foot a { color:var(--muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top">
+    <a href="https://hermes-masterclass.vercel.app/">← Masterclass · Home</a>
+    <span class="badge">Chapter 3 · Bonus Kit</span>
+  </div>
+
+  <div class="hero">
+    <div class="eyebrow"><span class="l"></span>Powering Hermes · The Local Strategy<span class="r"></span></div>
+    <h1>The Local Lab.<br><em>Free. Private. Yours.</em></h1>
+    <p class="sub">Which mode to run, what your machine can really hold, the models worth pulling &mdash; and the two traps that make people think local is bad.</p>
+    <div class="art"><img src="raw-images/lab-hero.jpg" alt="The Local Lab — the lab of the future"></div>
+  </div>
+
+  <!-- 01 · THE STRATEGY -->
+  <section class="sec">
+    <span class="sec-tag"><span class="dot"></span>01 · The strategy</span>
+    <h2>Pick your <em>mode</em> first.</h2>
+    <p class="lead">Local isn't all-or-nothing. Decide how much leaves your machine &mdash; the model choice follows.</p>
+    <div class="art" style="margin-top:26px;"><img src="raw-images/lab-modes.jpg" alt="Pick your mode — vault, connected, cloud"></div>
+    <div class="modes">
+      <div class="mode" style="--mc:var(--amber)">
+        <span class="me">🔒</span><h5>Vault</h5><div class="mw">nothing ever leaves</div>
+        <p>100% local, offline-capable. Client data, contracts, health, unreleased work.</p>
+        <span class="tag">sensitive work</span>
+      </div>
+      <div class="mode" style="--mc:var(--green-2)">
+        <span class="me">🔌</span><h5>Connected</h5><div class="mw">local first, cloud on demand</div>
+        <p>Local does drafts and grunt work; you swap to Sol or Opus for the hardest calls.</p>
+        <span class="tag">★ the daily strategy</span>
+      </div>
+      <div class="mode" style="--mc:var(--hermes-2)">
+        <span class="me">☁️</span><h5>Cloud-first</h5><div class="mw">local for the private 5%</div>
+        <p>Cloud by default; drop to local only when something can't leave the box.</p>
+        <span class="tag">low vram</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 · THE SLIDER -->
+  <section class="sec">
+    <span class="sec-tag"><span class="dot"></span>02 · Your machine</span>
+    <h2>What can <em>your</em> Mac actually run?</h2>
+    <p class="lead">Drag to your machine's memory &mdash; on Apple Silicon, <b>unified memory counts as VRAM</b>. On a PC, use your GPU's VRAM.</p>
+    <div class="rig">
+      <div class="rtop">
+        <span class="rlab">your memory · vram or apple unified</span>
+        <span class="rgb"><span id="rgbv">24</span><span> GB</span></span>
+      </div>
+      <input type="range" id="ram" min="0" max="7" step="1" value="2" aria-label="Machine memory">
+      <div class="ticks"><span>8</span><span>16</span><span>24</span><span>32</span><span>48</span><span>64</span><span>96</span><span>128</span></div>
+      <div class="rtier"><span class="rtemo" id="rtemo"></span><span class="rtname" id="rtname"></span><span class="rtctx" id="rtctx"></span></div>
+      <p class="rdesc" id="rdesc"></p>
+      <div class="rchips" id="rchips"></div>
+      <div class="timecmp">
+        <div class="tc time"><span class="tk">⏳ time machine</span><div class="big">As powerful as the frontier of <em id="tmdate"></em></div><p class="note" id="tmnote"></p><span class="lg" id="tmlg"></span></div>
+        <div class="tc now"><span class="tk">🎯 closest modern relative</span><div class="big" id="cmname"></div><p class="note" id="cmnote"></p><span class="lg" id="cmlg"></span></div>
+      </div>
+      <div class="rnote">Rule of thumb: the model file <b>plus</b> the context cache both live in memory &mdash; leave headroom. Quantized (Q4) sizes assumed.</div>
+    </div>
+  </section>
+
+  <!-- 03 · BEST IN CLASS -->
+  <section class="sec">
+    <span class="sec-tag"><span class="dot"></span>03 · Best in class</span>
+    <h2>Three jobs. Three <em>champions.</em></h2>
+    <p class="lead">Don't collect models &mdash; assign them. Click a command to copy it.</p>
+    <div class="champs">
+      <div class="champ" style="--cc:#a78bfa">
+        <span class="cnum">01</span>
+        <span class="cico"><img src="raw-images/qwen.svg" alt="Qwen"></span>
+        <div class="ct"><span class="ck">the coder</span><b>Qwen3-Coder 30B</b><p>32B-class quality at small-model speed. The local coding king.</p></div>
+        <div class="ccmd"><span class="pill">24GB · ~40 tok/s</span><code>ollama pull qwen3-coder:30b-a3b</code></div>
+      </div>
+      <div class="champ" style="--cc:#38bdf8">
+        <span class="cnum">02</span>
+        <span class="cico"><img src="raw-images/deepseek.svg" alt="DeepSeek"></span>
+        <div class="ct"><span class="ck">the reasoner</span><b>DeepSeek-R1 14B</b><p>Frontier chain-of-thought, distilled. Watch it think before it answers.</p></div>
+        <div class="ccmd"><span class="pill">16GB · 32B / 70B above</span><code>ollama pull deepseek-r1:14b</code></div>
+      </div>
+      <div class="champ" style="--cc:var(--green-2)">
+        <span class="cnum">03</span>
+        <span class="cico"><img src="raw-images/openai-white.svg" alt="OpenAI"></span>
+        <div class="ct"><span class="ck">the all-rounder</span><b>GPT-OSS 20B</b><p>OpenAI's open weights. Chat, tools and agents, in the house style.</p></div>
+        <div class="ccmd"><span class="pill">built for 16GB</span><code>ollama pull gpt-oss:20b</code></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 · THE FAMILIES -->
+  <section class="sec">
+    <span class="sec-tag"><span class="dot"></span>04 · The local landscape</span>
+    <h2>Six houses. Every <em>size.</em></h2>
+    <p class="lead">Every house ships a <b>ladder of sizes</b> &mdash; same brain, scaled up or down. Ollama is the front door to all of them. <b>Dots that fit your machine stay lit</b> (synced to the slider above) &mdash; click any dot to copy its pull command.</p>
+    <div class="chart">
+      <div class="chead"><span class="t">The local model landscape</span><span class="cswitch"><button class="cbtn on" data-view="sz">size</button><button class="cbtn" data-view="pw">power</button></span><span class="cmini"><span class="ml">your GB</span><input type="range" id="ram2" min="0" max="7" step="1" value="2" aria-label="Machine memory"><b id="rgbv2">24 GB</b></span></div>
+      <div class="crow">
+        <div class="cfam"><img src="raw-images/qwen.svg" alt="Qwen"><b>Qwen3<span>pragmatic · tool-happy</span></b></div>
+        <div class="ctrack"><span class="csweet" style="left:62.6%;width:9.8%"></span>
+          <span class="cdot" style="--dc:#a78bfa;left:29%;width:10px;height:10px" data-gb="8" data-tag="qwen3:4b" data-tip="qwen3:4b · fits 8GB+"></span>
+          <span class="cdot" style="--dc:#a78bfa;left:43.4%;width:12px;height:12px" data-gb="8" data-tag="qwen3:8b" data-tip="qwen3:8b · fits 8GB+"></span>
+          <span class="cdot" style="--dc:#a78bfa;left:55.1%;width:14px;height:14px" data-gb="16" data-tag="qwen3:14b" data-tip="qwen3:14b · fits 16GB+"></span>
+          <span class="cdot star" style="--dc:#a78bfa;left:71%;width:17px;height:17px" data-gb="24" data-tag="qwen3-coder:30b-a3b" data-tip="★ qwen3-coder:30b-a3b · fits 24GB+"></span>
+          <span class="cdot" style="--dc:#a78bfa;left:74.4%;width:17px;height:17px" data-gb="32" data-tag="qwen3:32b" data-tip="qwen3:32b · fits 32GB+"></span>
+        </div>
+      </div>
+      <div class="crow">
+        <div class="cfam"><img src="raw-images/deepseek.svg" alt="DeepSeek"><b>DeepSeek-R1<span>thinks out loud</span></b></div>
+        <div class="ctrack"><span class="csweet" style="left:62.6%;width:9.8%"></span>
+          <span class="cdot" style="--dc:#38bdf8;left:40.6%;width:12px;height:12px" data-gb="8" data-tag="deepseek-r1:7b" data-tip="deepseek-r1:7b · fits 8GB+"></span>
+          <span class="cdot" style="--dc:#38bdf8;left:55.1%;width:14px;height:14px" data-gb="16" data-tag="deepseek-r1:14b" data-tip="deepseek-r1:14b · fits 16GB+"></span>
+          <span class="cdot" style="--dc:#38bdf8;left:72.4%;width:17px;height:17px" data-gb="32" data-tag="deepseek-r1:32b" data-tip="deepseek-r1:32b · fits 32GB+"></span>
+          <span class="cdot" style="--dc:#38bdf8;left:88.7%;width:21px;height:21px" data-gb="48" data-tag="deepseek-r1:70b" data-tip="deepseek-r1:70b · fits 48GB+"></span>
+        </div>
+      </div>
+      <div class="crow">
+        <div class="cfam"><img src="raw-images/openai-white.svg" alt="OpenAI"><b>GPT-OSS<span>frontier genes · strict</span></b></div>
+        <div class="ctrack"><span class="csweet" style="left:62.6%;width:9.8%"></span>
+          <span class="cdot" style="--dc:#4ade80;left:62.6%;width:17px;height:17px" data-gb="16" data-tag="gpt-oss:20b" data-tip="gpt-oss:20b · fits 16GB+"></span>
+          <span class="cdot" style="--dc:#4ade80;left:98%;width:25px;height:25px" data-gb="96" data-tag="gpt-oss:120b" data-tip="gpt-oss:120b · fits ~80GB+"></span>
+        </div>
+      </div>
+      <div class="crow">
+        <div class="cfam"><img src="raw-images/gemma.svg" alt="Gemma"><b>Gemma 3<span>polished · safest</span></b></div>
+        <div class="ctrack"><span class="csweet" style="left:62.6%;width:9.8%"></span>
+          <span class="cdot" style="--dc:#2dd4bf;left:2%;width:10px;height:10px" data-gb="8" data-tag="gemma3:1b" data-tip="gemma3:1b · runs anywhere"></span>
+          <span class="cdot" style="--dc:#2dd4bf;left:29%;width:10px;height:10px" data-gb="8" data-tag="gemma3:4b" data-tip="gemma3:4b · fits 8GB+"></span>
+          <span class="cdot" style="--dc:#2dd4bf;left:51.9%;width:14px;height:14px" data-gb="16" data-tag="gemma3:12b" data-tip="gemma3:12b · fits 16GB+"></span>
+          <span class="cdot" style="--dc:#2dd4bf;left:68.8%;width:17px;height:17px" data-gb="24" data-tag="gemma3:27b" data-tip="gemma3:27b · fits 24GB+"></span>
+        </div>
+      </div>
+      <div class="crow">
+        <div class="cfam"><img src="raw-images/meta.svg" alt="Meta"><b>Llama<span>the standard · mid-road</span></b></div>
+        <div class="ctrack"><span class="csweet" style="left:62.6%;width:9.8%"></span>
+          <span class="cdot" style="--dc:#60a5fa;left:2%;width:10px;height:10px" data-gb="8" data-tag="llama3.2:1b" data-tip="llama3.2:1b · runs anywhere"></span>
+          <span class="cdot" style="--dc:#60a5fa;left:22.9%;width:10px;height:10px" data-gb="8" data-tag="llama3.2:3b" data-tip="llama3.2:3b · fits 8GB+"></span>
+          <span class="cdot" style="--dc:#60a5fa;left:43.4%;width:12px;height:12px" data-gb="8" data-tag="llama3.1:8b" data-tip="llama3.1:8b · fits 8GB+"></span>
+          <span class="cdot" style="--dc:#60a5fa;left:88.7%;width:21px;height:21px" data-gb="48" data-tag="llama3.3:70b" data-tip="llama3.3:70b · fits 48GB+"></span>
+        </div>
+      </div>
+      <div class="crow" style="border-bottom:none;">
+        <div class="cfam"><img src="raw-images/mistral.svg" alt="Mistral"><b>Mistral<span>lean · relaxed</span></b></div>
+        <div class="ctrack"><span class="csweet" style="left:62.6%;width:9.8%"></span>
+          <span class="cdot" style="--dc:#f0b441;left:40.6%;width:12px;height:12px" data-gb="8" data-tag="mistral:7b" data-tip="mistral:7b · fits 8GB+"></span>
+          <span class="cdot" style="--dc:#f0b441;left:51.9%;width:14px;height:14px" data-gb="16" data-tag="mistral-nemo" data-tip="mistral-nemo 12B · fits 16GB+"></span>
+          <span class="cdot" style="--dc:#f0b441;left:66.4%;width:17px;height:17px" data-gb="24" data-tag="mistral-small:24b" data-tip="mistral-small:24b · fits 24GB+"></span>
+        </div>
+      </div>
+      <div class="caxisrow"><span></span><div class="caxis szax">
+        <span style="left:2%">1B</span><span style="left:43.4%">8B</span><span style="left:71%">30B</span><span style="left:88.7%">70B</span><span style="left:98%">120B</span>
+      </div><div class="caxis pwax">
+        <span style="left:7%">quick chat</span><span style="left:35%">real work</span><span style="left:64%">agent-grade</span><span style="left:90%">frontier-adjacent</span>
+      </div></div>
+      <div class="cfoot"><span>dot size = parameters · <span style="color:var(--green-2)">green band</span> = your machine's reach (drag the slider) · ★ = the coder</span><span class="sync" id="csync"></span></div>
+    </div>
+    <div class="callout">
+      <span class="ic">🎭</span>
+      <div><div class="h">Same brains, different manners</div>
+      <p>Alignment is part of the spec sheet. <b style="color:#fff">Gemma and GPT-OSS</b> ship locked-down &mdash; they'll refuse anything spicy, which is exactly what you want for family-safe or client-facing builds. <b style="color:#fff">Llama</b> sits mid-road; <b style="color:#fff">Mistral</b> is looser. And fully <em>neutral</em>, steer-it-yourself models exist too &mdash; that's Nous Research's whole specialty from lesson 3.6. Match the character to the job.</p></div>
+    </div>
+    <div class="links">
+      <a class="lk" href="https://ollama.com" target="_blank" rel="noopener"><img src="raw-images/ollama.svg" alt="">ollama.com</a>
+      <a class="lk" href="https://ollama.com/library" target="_blank" rel="noopener">browse the model library →</a>
+      <a class="lk" href="https://lmstudio.ai" target="_blank" rel="noopener"><img src="raw-images/lmstudio.svg" alt="">LM Studio (GUI)</a>
+    </div>
+  </section>
+
+  <!-- 05 · THE POWER SPECTRUM -->
+  <section class="sec">
+    <span class="sec-tag"><span class="dot"></span>05 · The honest context</span>
+    <h2>How good is local, <em>really?</em></h2>
+    <p class="lead">Honest answer: a good local 30B today does what the frontier did not long ago &mdash; and for drafts, grunt work and private documents, that's already most of your tokens.</p>
+    <div class="art" style="margin-top:26px;"><img src="raw-images/lab-spectrum.jpg" alt="The power spectrum — from 8B to frontier"></div>
+    <div class="bands">
+      <div class="band" style="--bc:var(--dim)">
+        <span class="bk">local · small</span><h5>The pocket brain</h5>
+        <p>Chat, drafts, summaries &mdash; quick, light, runs on almost anything.</p>
+        <div class="blg"><img src="raw-images/meta.svg" alt="Llama"><img src="raw-images/gemma.svg" alt="Gemma"><img src="raw-images/mistral.svg" alt="Mistral"></div>
+      </div>
+      <div class="band" style="--bc:var(--green-2)">
+        <span class="bk">local · 30B ★</span><h5>Yesterday's frontier</h5>
+        <p>Real coding, real agents, real context &mdash; on your own desk, for free.</p>
+        <div class="blg"><img src="raw-images/qwen.svg" alt="Qwen"><img src="raw-images/openai-white.svg" alt="GPT-OSS"></div>
+      </div>
+      <div class="band" style="--bc:var(--p4)">
+        <span class="bk">rented giants</span><h5>Open, but huge</h5>
+        <p>GLM, DeepSeek, Kimi &mdash; open-weight frontier. Too big to house; pennies to rent.</p>
+        <div class="blg"><img src="raw-images/glm.svg" alt="GLM"><img src="raw-images/deepseek.svg" alt="DeepSeek"><img src="raw-images/kimi.svg" alt="Kimi"></div>
+      </div>
+      <div class="band" style="--bc:var(--hermes-2)">
+        <span class="bk">frontier cloud</span><h5>The hardest 5%</h5>
+        <p>Deep reasoning, architecture, design taste. Route it here &mdash; then come home.</p>
+        <div class="blg"><img src="raw-images/openai-white.svg" alt="GPT-5.6"><img src="raw-images/claude.svg" alt="Claude"></div>
+      </div>
+    </div>
+    <div class="callout">
+      <span class="ic">⚖️</span>
+      <div><div class="h">Where the line really sits</div>
+      <p>On raw reasoning, the frontier still wins &mdash; that's why the Connected mode exists. But local's edge isn't IQ: it's <b style="color:#fff">zero cost per token, zero data egress, and no rate limits</b>. Route by task, not by loyalty.</p></div>
+    </div>
+  </section>
+
+  <!-- 06 · THE TWO TRAPS -->
+  <section class="sec">
+    <span class="sec-tag"><span class="dot"></span>06 · The two traps</span>
+    <h2>Why people think local is <em>bad.</em></h2>
+    <p class="lead">It's usually not the model. It's one of these two settings.</p>
+    <div class="traps">
+      <div class="trap">
+        <div class="th"><span class="ti">🧠</span><h5>The 4,096-token default</h5></div>
+        <p>Qwen3-Coder's real context is <b>256K</b>. Ollama ships it capped at <b>4K</b> &mdash; you're using ~1.6% of the brain, then blaming the model.</p>
+        <div class="tbars"><div class="tb1"></div><div class="tb2"></div><div class="tl"><span>native · 256K</span><span style="color:var(--red)">default · 4K</span></div></div>
+        <div class="fix"><b>Fix:</b> <code>OLLAMA_CONTEXT_LENGTH=65536 ollama serve</code></div>
+      </div>
+      <div class="trap">
+        <div class="th"><span class="ti">🌊</span><h5>The KV-cache wall</h5></div>
+        <p>Context eats memory: a 70B needs <b>~42GB just for cache at 128K</b>. Consumer machines top out around <b>32&ndash;64K usable</b> &mdash; the cache won't fit, not the model.</p>
+        <div class="fix"><b>Fix:</b> KV-cache quantization &mdash; <code>q8_0</code> roughly halves cache memory with minimal quality loss.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 · WIRE IT UP -->
+  <section class="sec">
+    <span class="sec-tag"><span class="dot"></span>07 · Wire it up</span>
+    <h2>Three commands to a <em>sealed room.</em></h2>
+    <p class="lead">Ollama exposes an OpenAI-compatible endpoint on <b>localhost:11434</b> &mdash; Hermes plugs in like any other brain. Nothing leaves the box.</p>
+    <div class="code">
+      <div class="bar"><div class="dots"><span></span><span></span><span></span></div><span class="t">terminal · local &amp; free</span><button class="copy" data-copy="ollama pull qwen3-coder:30b-a3b
+OLLAMA_CONTEXT_LENGTH=65536 ollama serve
+hermes config set model qwen3-coder:30b-a3b --base-url http://localhost:11434/v1">copy</button></div>
+      <pre><span class="cmt"># 1 · pull the coder</span>
+<span class="pr">$</span> ollama pull qwen3-coder:30b-a3b
+
+<span class="cmt"># 2 · raise the context BEFORE you judge it</span>
+<span class="pr">$</span> <span class="fl">OLLAMA_CONTEXT_LENGTH</span>=65536 ollama serve
+
+<span class="cmt"># 3 · point Hermes at localhost</span>
+<span class="pr">$</span> hermes config set model <span class="st">qwen3-coder:30b-a3b</span> <span class="fl">--base-url</span> http://localhost:11434/v1</pre>
+    </div>
+    <div class="links">
+      <a class="lk" href="https://ollama.com/download" target="_blank" rel="noopener"><img src="raw-images/ollama.svg" alt="">get Ollama</a>
+      <a class="lk" href="https://lmstudio.ai" target="_blank" rel="noopener"><img src="raw-images/lmstudio.svg" alt="">prefer a GUI? LM Studio</a>
+    </div>
+    <div class="art"><img src="raw-images/lab-closer.jpg" alt="Your machine. Your mind."></div>
+    <div class="sowhat"><span class="swl">So what →</span><p>Tonight: drag the slider to your machine, pull its <b>recommended picks</b>, and raise the context <em>before</em> you judge anything. Your lab is free, private, and always open.</p></div>
+  </section>
+
+  <div class="foot">Hermes Agent Masterclass · Chapter 3 bonus · <a href="https://hermes-masterclass.vercel.app/">hermes-masterclass.vercel.app</a></div>
+</div>
+
+<script>
+  // ── the rig slider ──
+  var GBS = [8, 16, 24, 32, 48, 64, 96, 128];
+  var TIERS = [
+    { min:8,  emo:"🧪", name:"The Pocket Lab",   ctx:"keep context ≤16–32K",
+      desc:"Small but real. Llama 3.2, Gemma 3 and Qwen3 in their small sizes — chat, drafts and grunt work, snappy on almost anything.",
+      chips:[["meta.svg","Llama 3.2 3B","llama3.2:3b",1],["gemma.svg","Gemma 3 4B","gemma3:4b",0],["qwen.svg","Qwen3 4B","qwen3:4b",0]],
+      tm:["late 2022 — 3½ years back","Today's small models clear the original ChatGPT (GPT-3.5) with room to spare.",["openai-white.svg"]],
+      cmp:["today's nano tier","GPT-5.4-Nano-class jobs — chat, drafts, triage. The always-on cheap seats.",["openai-white.svg"]] },
+    { min:16, emo:"⚗️", name:"The Workbench",    ctx:"32K comfortable",
+      desc:"The 14–20B class opens up. GPT-OSS 20B — OpenAI's open model, built to run in 16GB — moves in, alongside a real reasoner.",
+      chips:[["openai-white.svg","GPT-OSS 20B","gpt-oss:20b",1],["qwen.svg","Qwen3 14B","qwen3:14b",0],["deepseek.svg","DeepSeek-R1 14B","deepseek-r1:14b",0]],
+      tm:["January 2025 — 18 months back","GPT-OSS 20B trades blows with o3-mini — OpenAI's own parity claim from the launch post.",["openai-white.svg"]],
+      cmp:["OpenAI o3-mini","The official closest relative — straight from OpenAI's launch post. In Claude terms: knocking on Haiku's door.",["openai-white.svg","claude.svg"]] },
+    { min:24, emo:"⚡", name:"The Sweet Spot ★", ctx:"64K with KV-quant",
+      desc:"Qwen3-Coder 30B at ~40 tok/s with real context — the best local coding experience per pound. The tier this whole lesson is built around.",
+      chips:[["qwen.svg","Qwen3-Coder 30B","qwen3-coder:30b-a3b",1],["gemma.svg","Gemma 3 27B","gemma3:27b",0],["openai-white.svg","GPT-OSS 20B","gpt-oss:20b",0]],
+      tm:["mid-2024 — two years back","This tier plays in GPT-4o's league — the best model on Earth back then.",["openai-white.svg"]],
+      cmp:["today's fast tier","Haiku 4.5 / Flash-class workhorses — the same league of jobs, a very different bill.",["claude.svg","gemini.svg"]] },
+    { min:32, emo:"🔥", name:"The Forge",        ctx:"longer context, more headroom",
+      desc:"Same coder, but the extra headroom goes straight into context and speed — and the 32B reasoners fit without squeezing.",
+      chips:[["qwen.svg","Qwen3-Coder 30B","qwen3-coder:30b-a3b",1],["deepseek.svg","DeepSeek-R1 32B","deepseek-r1:32b",0],["qwen.svg","Qwen3 32B","qwen3:32b",0]],
+      tm:["September 2024 — nearly two years back","DeepSeek benchmarked its R1-32B distill past o1-mini — their own published numbers.",["deepseek.svg"]],
+      cmp:["OpenAI o1-mini","The mini reasoner this tier's distills were built to match. Claude-wise: Haiku-class reasoning.",["openai-white.svg","claude.svg"]] },
+    { min:48, emo:"🚀", name:"The Heavy Rig",    ctx:"long context viable",
+      desc:"The 70B class moves in, quantized — Meta's flagship-sized Llama with the coder still resident beside it.",
+      chips:[["meta.svg","Llama 3.3 70B","llama3.3:70b",1],["deepseek.svg","DeepSeek-R1 32B","deepseek-r1:32b",0],["qwen.svg","Qwen3-Coder 30B","qwen3-coder:30b-a3b",0]],
+      tm:["March 2023 — over three years back","The original GPT-4 — this tier comfortably clears the model that changed everything.",["openai-white.svg"]],
+      cmp:["2024's 405B flagships","Meta pitched Llama 3.3 70B at its 405B flagship's level — the class it pitted against GPT-4o and Claude 3.5 Sonnet.",["meta.svg","claude.svg"]] },
+    { min:64, emo:"🛰️", name:"Mission Control",  ctx:"long context, multiple models",
+      desc:"Frontier reasoning distilled to 70B, running with genuinely long context — or several smaller models resident at once.",
+      chips:[["deepseek.svg","DeepSeek-R1 70B","deepseek-r1:70b",1],["meta.svg","Llama 3.3 70B","llama3.3:70b",0],["qwen.svg","Qwen3-Coder 30B","qwen3-coder:30b-a3b",0]],
+      tm:["2024's flagships — two years back","405B-class answers living on your desk — now with the context to actually use them.",["meta.svg"]],
+      cmp:["the rented open giants","GLM / DeepSeek territory — the gap left is context and speed, not class.",["glm.svg","deepseek.svg"]] },
+    { min:96, emo:"🌌", name:"The Observatory",  ctx:"~128K practical",
+      desc:"The 120B class comes into view — GPT-OSS 120B wants ~80GB — with room left over for the coder and a reasoner.",
+      chips:[["openai-white.svg","GPT-OSS 120B","gpt-oss:120b",1],["deepseek.svg","DeepSeek-R1 70B","deepseek-r1:70b",0],["qwen.svg","Qwen3-Coder 30B","qwen3-coder:30b-a3b",0]],
+      tm:["April 2025 — 15 months back","GPT-OSS 120B lands near o4-mini — OpenAI's own parity claim.",["openai-white.svg"]],
+      cmp:["OpenAI o4-mini","The official closest relative, from the launch post itself. In Claude terms: Haiku 4.5 territory.",["openai-white.svg","claude.svg"]] },
+    { min:128, emo:"🏛️", name:"Mount Olympus",   ctx:"long context on everything",
+      desc:"Everything on this page runs at once, all with real context. At this point your bottleneck is ideas, not memory.",
+      chips:[["openai-white.svg","GPT-OSS 120B","gpt-oss:120b",1],["meta.svg","Llama 3.3 70B","llama3.3:70b",0],["deepseek.svg","DeepSeek-R1 70B","deepseek-r1:70b",0]],
+      tm:["April 2025 — 15 months back","o4-mini-class reasoning, fully offline — with room for the whole roster beside it.",["openai-white.svg"]],
+      cmp:["OpenAI o4-mini","Frontier-mini reasoning that never leaves your desk — Haiku 4.5 territory, in Claude terms.",["openai-white.svg","claude.svg"]] }
+  ];
+  var ram = document.getElementById('ram');
+  function rigUpdate(){
+    var i = parseInt(ram.value, 10);
+    var gb = GBS[i], t = TIERS[i];
+    document.getElementById('rgbv').textContent = gb;
+    document.getElementById('rtemo').textContent = t.emo;
+    document.getElementById('rtname').textContent = t.name;
+    document.getElementById('rtctx').textContent = t.ctx;
+    document.getElementById('rdesc').textContent = t.desc;
+    document.getElementById('rchips').innerHTML = t.chips.map(function(c){
+      return '<span class="rchip'+(c[3]?' star':'')+'"><img src="raw-images/'+c[0]+'" alt=""><span><b>'+c[1]+'</b><br><code>'+(c[2].indexOf(':')>-1?'ollama pull '+c[2]:c[2]+' family')+'</code></span></span>';
+    }).join('');
+    var lg = function(arr){ return arr.map(function(l){ return '<img src="raw-images/' + l + '" alt="">'; }).join(''); };
+    document.getElementById('tmdate').textContent = t.tm[0];
+    document.getElementById('tmnote').textContent = t.tm[1];
+    document.getElementById('tmlg').innerHTML = lg(t.tm[2]);
+    document.getElementById('cmname').innerHTML = '&asymp; <em>' + t.cmp[0] + '</em>';
+    document.getElementById('cmnote').textContent = t.cmp[1];
+    document.getElementById('cmlg').innerHTML = lg(t.cmp[2]);
+    chartSync(gb);
+  }
+  // right edge of "your reach" band per slider stop (biggest model that fits)
+  var REACH = [45, 64, 72.5, 75, 90, 91, 99, 100];
+  function chartSync(gb){
+    document.querySelectorAll('.cdot').forEach(function(d){ d.classList.toggle('dim', parseInt(d.dataset.gb, 10) > gb); });
+    var w = REACH[GBS.indexOf(gb)] + '%';
+    document.querySelectorAll('.csweet').forEach(function(b){ b.style.left = '0'; b.style.width = w; });
+    var r2 = document.getElementById('ram2'); if (r2) r2.value = GBS.indexOf(gb);
+    var g2 = document.getElementById('rgbv2'); if (g2) g2.textContent = gb + ' GB';
+    var cs = document.getElementById('csync');
+    if (cs) cs.textContent = '✦ lit = fits your ' + gb + ' GB' + (chartView === 'pw' ? ' · sorted by capability' : '');
+  }
+
+  // size ⇄ power views — dots animate between parameter position and capability position
+  var PW = { 'qwen3:4b':22, 'qwen3:8b':33, 'qwen3:14b':45, 'qwen3-coder:30b-a3b':66, 'qwen3:32b':60,
+    'deepseek-r1:7b':36, 'deepseek-r1:14b':52, 'deepseek-r1:32b':68, 'deepseek-r1:70b':78,
+    'gpt-oss:20b':58, 'gpt-oss:120b':85,
+    'gemma3:1b':6, 'gemma3:4b':20, 'gemma3:12b':38, 'gemma3:27b':55,
+    'llama3.2:1b':5, 'llama3.2:3b':14, 'llama3.1:8b':28, 'llama3.3:70b':70,
+    'mistral:7b':25, 'mistral-nemo':36, 'mistral-small:24b':50 };
+  var chartView = 'sz';
+  document.querySelectorAll('.cdot').forEach(function(d){ d.dataset.sz = d.style.left; d.dataset.pw = (2 + (PW[d.dataset.tag] || 30) * 0.96) + '%'; });
+  document.querySelectorAll('.cbtn').forEach(function(b){
+    b.addEventListener('click', function(){
+      chartView = b.dataset.view;
+      document.querySelectorAll('.cbtn').forEach(function(x){ x.classList.toggle('on', x === b); });
+      document.querySelector('.chart').classList.toggle('pw', chartView === 'pw');
+      document.querySelectorAll('.cdot').forEach(function(d){ d.style.left = d.dataset[chartView]; });
+      chartSync(GBS[parseInt(ram.value, 10)]);
+    });
+  });
+
+  ram.addEventListener('input', rigUpdate); rigUpdate();
+
+  // the chart's own mini slider — two-way synced with the main rig
+  var ram2el = document.getElementById('ram2');
+  if (ram2el) ram2el.addEventListener('input', function(){ ram.value = ram2el.value; rigUpdate(); });
+
+  // chart dots → click to copy the pull command
+  document.querySelectorAll('.cdot').forEach(function(d){
+    d.addEventListener('click', function(){
+      navigator.clipboard.writeText('ollama pull ' + d.dataset.tag);
+      var t = d.dataset.tip; d.dataset.tip = 'copied ✓';
+      setTimeout(function(){ d.dataset.tip = t; }, 1400);
+    });
+  });
+  // champion commands → click to copy
+  document.querySelectorAll('.champ .ccmd code').forEach(function(c){
+    c.addEventListener('click', function(){
+      var t = c.textContent;
+      navigator.clipboard.writeText(t);
+      c.textContent = 'copied ✓';
+      setTimeout(function(){ c.textContent = t; }, 1400);
+    });
+  });
+
+  // ── copy buttons ──
+  document.querySelectorAll('.copy').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var text = btn.dataset.copyEl ? document.getElementById(btn.dataset.copyEl).textContent : btn.dataset.copy;
+      navigator.clipboard.writeText(text).then(function(){
+        var old = btn.textContent; btn.textContent = 'copied ✓'; btn.classList.add('ok');
+        setTimeout(function(){ btn.textContent = old; btn.classList.remove('ok'); }, 1600);
+      });
+    });
+  });
+</script>
+</body>
+</html>
