@@ -1,13 +1,14 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>O Laboratório Local · Bonus Kit — INEMA.CLUB</title>
-<link rel="icon" href="raw-images/icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Newsreader:ital,wght@1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+<link href="raw-images/icon.png" rel="icon"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;family=Newsreader:ital,wght@1,400;1,500;1,600;1,700&amp;display=swap" rel="stylesheet"/>
 <style>
   :root {
     --bg:#0a0a0c; --card:#14141a; --card-2:#191922; --ui:#1c1c26; --border:#2a2a35; --border-2:#3a3a48;
@@ -241,240 +242,231 @@
   .foot { text-align:center; margin-top:64px; color:var(--dim); font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:0.08em; }
   .foot a { color:var(--muted); }
 </style>
-</head>
-<body>
+<link href="https://inematds.github.io/local-kit/" hreflang="pt-BR" rel="alternate"/><link href="https://inematds.github.io/local-kit/en/" hreflang="en" rel="alternate"/><link href="https://inematds.github.io/local-kit/es/" hreflang="es" rel="alternate"/></head>
+<body><div class="inema-lang" style="position:fixed;right:14px;bottom:14px;z-index:9999;display:flex;gap:2px;padding:4px;border-radius:10px;background:rgba(12,12,16,.82);border:1px solid rgba(226,162,59,.45);font:600 12px/1 Sora,Inter,system-ui,sans-serif;backdrop-filter:blur(8px)" translate="no"><a href="./" hreflang="pt-BR" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#1a1206;background:#E2A23B">PT</a><a href="en/" hreflang="en" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">EN</a><a href="es/" hreflang="es" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">ES</a></div>
 <div class="wrap">
-
-  <div class="top">
-    <a href="https://inema.club/">← INEMA.CLUB · Início</a>
-    <span class="badge">Kit Local · INEMA</span>
-  </div>
-
-  <div class="hero">
-    <div class="eyebrow"><span class="l"></span>Rodando modelos locais · A Estratégia Local<span class="r"></span></div>
-    <h1>O Laboratório Local.<br><em>Grátis. Privado. Seu.</em></h1>
-    <p class="sub">Qual modo rodar, o que sua máquina realmente aguenta, os modelos que valem o disco — e as duas armadilhas que fazem as pessoas acharem que local é ruim.</p>
-    <div class="art"><img src="raw-images/hero.jpg" alt="O Laboratório Local — a estação do futuro"></div>
-  </div>
-
-  <!-- 01 · A ESTRATÉGIA -->
-  <section class="sec">
-    <span class="sec-tag"><span class="dot"></span>01 · A estratégia</span>
-    <h2>Escolha seu <em>modo</em> primeiro.</h2>
-    <p class="lead">Local não é tudo ou nada. Decida o quanto sai da sua máquina — a escolha do modelo vem depois.</p>
-    <div class="art" style="margin-top:26px;"><img src="raw-images/modos.jpg" alt="Escolha seu modo — cofre, conectado, nuvem"></div>
-    <div class="modes">
-      <div class="mode" style="--mc:var(--amber)">
-        <span class="me">🔒</span><h5>Cofre</h5><div class="mw">nada nunca sai</div>
-        <p>100% local, funciona offline. Dados de cliente, contratos, saúde, trabalho ainda não lançado.</p>
-        <span class="tag">trabalho sensível</span>
-      </div>
-      <div class="mode" style="--mc:var(--green-2)">
-        <span class="me">🔌</span><h5>Conectado</h5><div class="mw">local primeiro, nuvem sob demanda</div>
-        <p>O local cuida dos rascunhos e do trabalho pesado; você troca pra nuvem nas decisões mais difíceis.</p>
-        <span class="tag">★ a estratégia do dia a dia</span>
-      </div>
-      <div class="mode" style="--mc:var(--hermes-2)">
-        <span class="me">☁️</span><h5>Nuvem-primeiro</h5><div class="mw">local só para os 5% privados</div>
-        <p>Nuvem por padrão; cai pro local só quando algo não pode sair da máquina.</p>
-        <span class="tag">pouca vram</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- 02 · O SLIDER -->
-  <section class="sec">
-    <span class="sec-tag"><span class="dot"></span>02 · Sua máquina</span>
-    <h2>O que <em>sua</em> máquina realmente aguenta?</h2>
-    <p class="lead">Arraste até a memória da sua máquina — em Mac com Apple Silicon, <b>memória unificada conta como VRAM</b>. Em PC, use a VRAM da sua GPU.</p>
-    <div class="rig">
-      <div class="rtop">
-        <span class="rlab">sua memória · vram ou apple unificada</span>
-        <span class="rgb"><span id="rgbv">24</span><span> GB</span></span>
-      </div>
-      <input type="range" id="ram" min="0" max="7" step="1" value="2" aria-label="Memória da máquina">
-      <div class="ticks"><span>8</span><span>16</span><span>24</span><span>32</span><span>48</span><span>64</span><span>96</span><span>128</span></div>
-      <div class="rtier"><span class="rtemo" id="rtemo"></span><span class="rtname" id="rtname"></span><span class="rtctx" id="rtctx"></span></div>
-      <p class="rdesc" id="rdesc"></p>
-      <div class="rchips" id="rchips"></div>
-      <div class="timecmp">
-        <div class="tc time"><span class="tk">⏳ máquina do tempo</span><div class="big">Tão potente quanto a fronteira de <em id="tmdate"></em></div><p class="note" id="tmnote"></p><span class="lg" id="tmlg"></span></div>
-        <div class="tc now"><span class="tk">🎯 parente moderno mais próximo</span><div class="big" id="cmname"></div><p class="note" id="cmnote"></p><span class="lg" id="cmlg"></span></div>
-      </div>
-      <div class="rnote">Regra de bolso: o arquivo do modelo <b>mais</b> o cache de contexto moram na memória — deixe folga. Tamanhos assumem quantização Q4.</div>
-    </div>
-  </section>
-
-  <!-- 03 · OS MELHORES DA CATEGORIA -->
-  <section class="sec">
-    <span class="sec-tag"><span class="dot"></span>03 · Os melhores da categoria</span>
-    <h2>Três trabalhos. Três <em>campeões.</em></h2>
-    <p class="lead">Não colecione modelos — designe-os. Clique num comando pra copiar.</p>
-    <div class="champs">
-      <div class="champ" style="--cc:#a78bfa">
-        <span class="cnum">01</span>
-        <span class="cico"><img src="raw-images/qwen.svg" alt="Qwen"></span>
-        <div class="ct"><span class="ck">o programador</span><b>Qwen3-Coder 30B</b><p>Qualidade de classe 32B na velocidade de um modelo pequeno. O rei do código local.</p></div>
-        <div class="ccmd"><span class="pill">24GB · ~40 tok/s</span><code>ollama pull qwen3-coder:30b-a3b</code></div>
-      </div>
-      <div class="champ" style="--cc:#38bdf8">
-        <span class="cnum">02</span>
-        <span class="cico"><img src="raw-images/deepseek.svg" alt="DeepSeek"></span>
-        <div class="ct"><span class="ck">o raciocinador</span><b>DeepSeek-R1 14B</b><p>Cadeia de raciocínio de fronteira, destilada. Veja ele pensar antes de responder.</p></div>
-        <div class="ccmd"><span class="pill">16GB · 32B / 70B acima</span><code>ollama pull deepseek-r1:14b</code></div>
-      </div>
-      <div class="champ" style="--cc:var(--green-2)">
-        <span class="cnum">03</span>
-        <span class="cico"><img src="raw-images/openai-white.svg" alt="OpenAI"></span>
-        <div class="ct"><span class="ck">o generalista</span><b>GPT-OSS 20B</b><p>Os pesos abertos da OpenAI. Bate-papo, ferramentas e agentes, no estilo da casa.</p></div>
-        <div class="ccmd"><span class="pill">feito para 16GB</span><code>ollama pull gpt-oss:20b</code></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 04 · AS FAMÍLIAS -->
-  <section class="sec">
-    <span class="sec-tag"><span class="dot"></span>04 · O cenário local</span>
-    <h2>Seis casas. Todo <em>tamanho.</em></h2>
-    <p class="lead">Toda casa lança uma <b>escada de tamanhos</b> — o mesmo cérebro, escalado pra cima ou pra baixo. O Ollama é a porta de entrada pra todas elas. <b>Os pontos que cabem na sua máquina ficam acesos</b> (sincronizado com o slider acima) — clique em qualquer ponto pra copiar o comando de pull.</p>
-    <div class="chart">
-      <div class="chead"><span class="t">O cenário de modelos locais</span><span class="cswitch"><button class="cbtn on" data-view="sz">tamanho</button><button class="cbtn" data-view="pw">poder</button></span><span class="cmini"><span class="ml">seus GB</span><input type="range" id="ram2" min="0" max="7" step="1" value="2" aria-label="Memória da máquina"><b id="rgbv2">24 GB</b></span></div>
-      <div class="crow">
-        <div class="cfam"><img src="raw-images/qwen.svg" alt="Qwen"><b>Qwen3<span>pragmático · adora ferramentas</span></b></div>
-        <div class="ctrack"><span class="csweet" style="left:62.6%;width:9.8%"></span>
-          <span class="cdot" style="--dc:#a78bfa;left:29%;width:10px;height:10px" data-gb="8" data-tag="qwen3:4b" data-tip="qwen3:4b · cabe em 8GB+"></span>
-          <span class="cdot" style="--dc:#a78bfa;left:43.4%;width:12px;height:12px" data-gb="8" data-tag="qwen3:8b" data-tip="qwen3:8b · cabe em 8GB+"></span>
-          <span class="cdot" style="--dc:#a78bfa;left:55.1%;width:14px;height:14px" data-gb="16" data-tag="qwen3:14b" data-tip="qwen3:14b · cabe em 16GB+"></span>
-          <span class="cdot star" style="--dc:#a78bfa;left:71%;width:17px;height:17px" data-gb="24" data-tag="qwen3-coder:30b-a3b" data-tip="★ qwen3-coder:30b-a3b · cabe em 24GB+"></span>
-          <span class="cdot" style="--dc:#a78bfa;left:74.4%;width:17px;height:17px" data-gb="32" data-tag="qwen3:32b" data-tip="qwen3:32b · cabe em 32GB+"></span>
-        </div>
-      </div>
-      <div class="crow">
-        <div class="cfam"><img src="raw-images/deepseek.svg" alt="DeepSeek"><b>DeepSeek-R1<span>pensa em voz alta</span></b></div>
-        <div class="ctrack"><span class="csweet" style="left:62.6%;width:9.8%"></span>
-          <span class="cdot" style="--dc:#38bdf8;left:40.6%;width:12px;height:12px" data-gb="8" data-tag="deepseek-r1:7b" data-tip="deepseek-r1:7b · cabe em 8GB+"></span>
-          <span class="cdot" style="--dc:#38bdf8;left:55.1%;width:14px;height:14px" data-gb="16" data-tag="deepseek-r1:14b" data-tip="deepseek-r1:14b · cabe em 16GB+"></span>
-          <span class="cdot" style="--dc:#38bdf8;left:72.4%;width:17px;height:17px" data-gb="32" data-tag="deepseek-r1:32b" data-tip="deepseek-r1:32b · cabe em 32GB+"></span>
-          <span class="cdot" style="--dc:#38bdf8;left:88.7%;width:21px;height:21px" data-gb="48" data-tag="deepseek-r1:70b" data-tip="deepseek-r1:70b · cabe em 48GB+"></span>
-        </div>
-      </div>
-      <div class="crow">
-        <div class="cfam"><img src="raw-images/openai-white.svg" alt="OpenAI"><b>GPT-OSS<span>genes de fronteira · rígido</span></b></div>
-        <div class="ctrack"><span class="csweet" style="left:62.6%;width:9.8%"></span>
-          <span class="cdot" style="--dc:#4ade80;left:62.6%;width:17px;height:17px" data-gb="16" data-tag="gpt-oss:20b" data-tip="gpt-oss:20b · cabe em 16GB+"></span>
-          <span class="cdot" style="--dc:#4ade80;left:98%;width:25px;height:25px" data-gb="96" data-tag="gpt-oss:120b" data-tip="gpt-oss:120b · cabe em ~80GB+"></span>
-        </div>
-      </div>
-      <div class="crow">
-        <div class="cfam"><img src="raw-images/gemma.svg" alt="Gemma"><b>Gemma 3<span>polido · o mais seguro</span></b></div>
-        <div class="ctrack"><span class="csweet" style="left:62.6%;width:9.8%"></span>
-          <span class="cdot" style="--dc:#2dd4bf;left:2%;width:10px;height:10px" data-gb="8" data-tag="gemma3:1b" data-tip="gemma3:1b · roda em qualquer lugar"></span>
-          <span class="cdot" style="--dc:#2dd4bf;left:29%;width:10px;height:10px" data-gb="8" data-tag="gemma3:4b" data-tip="gemma3:4b · cabe em 8GB+"></span>
-          <span class="cdot" style="--dc:#2dd4bf;left:51.9%;width:14px;height:14px" data-gb="16" data-tag="gemma3:12b" data-tip="gemma3:12b · cabe em 16GB+"></span>
-          <span class="cdot" style="--dc:#2dd4bf;left:68.8%;width:17px;height:17px" data-gb="24" data-tag="gemma3:27b" data-tip="gemma3:27b · cabe em 24GB+"></span>
-        </div>
-      </div>
-      <div class="crow">
-        <div class="cfam"><img src="raw-images/meta.svg" alt="Meta"><b>Llama<span>o padrão · meio-termo</span></b></div>
-        <div class="ctrack"><span class="csweet" style="left:62.6%;width:9.8%"></span>
-          <span class="cdot" style="--dc:#60a5fa;left:2%;width:10px;height:10px" data-gb="8" data-tag="llama3.2:1b" data-tip="llama3.2:1b · roda em qualquer lugar"></span>
-          <span class="cdot" style="--dc:#60a5fa;left:22.9%;width:10px;height:10px" data-gb="8" data-tag="llama3.2:3b" data-tip="llama3.2:3b · cabe em 8GB+"></span>
-          <span class="cdot" style="--dc:#60a5fa;left:43.4%;width:12px;height:12px" data-gb="8" data-tag="llama3.1:8b" data-tip="llama3.1:8b · cabe em 8GB+"></span>
-          <span class="cdot" style="--dc:#60a5fa;left:88.7%;width:21px;height:21px" data-gb="48" data-tag="llama3.3:70b" data-tip="llama3.3:70b · cabe em 48GB+"></span>
-        </div>
-      </div>
-      <div class="crow" style="border-bottom:none;">
-        <div class="cfam"><img src="raw-images/mistral.svg" alt="Mistral"><b>Mistral<span>enxuto · relaxado</span></b></div>
-        <div class="ctrack"><span class="csweet" style="left:62.6%;width:9.8%"></span>
-          <span class="cdot" style="--dc:#f0b441;left:40.6%;width:12px;height:12px" data-gb="8" data-tag="mistral:7b" data-tip="mistral:7b · cabe em 8GB+"></span>
-          <span class="cdot" style="--dc:#f0b441;left:51.9%;width:14px;height:14px" data-gb="16" data-tag="mistral-nemo" data-tip="mistral-nemo 12B · cabe em 16GB+"></span>
-          <span class="cdot" style="--dc:#f0b441;left:66.4%;width:17px;height:17px" data-gb="24" data-tag="mistral-small:24b" data-tip="mistral-small:24b · cabe em 24GB+"></span>
-        </div>
-      </div>
-      <div class="caxisrow"><span></span><div class="caxis szax">
-        <span style="left:2%">1B</span><span style="left:43.4%">8B</span><span style="left:71%">30B</span><span style="left:88.7%">70B</span><span style="left:98%">120B</span>
-      </div><div class="caxis pwax">
-        <span style="left:7%">papo rápido</span><span style="left:35%">trabalho de verdade</span><span style="left:64%">nível agente</span><span style="left:90%">quase-fronteira</span>
-      </div></div>
-      <div class="cfoot"><span>tamanho do ponto = parâmetros · <span style="color:var(--green-2)">faixa verde</span> = alcance da sua máquina (arraste o slider) · ★ = o coder</span><span class="sync" id="csync"></span></div>
-    </div>
-    <div class="callout">
-      <span class="ic">🎭</span>
-      <div><div class="h">Mesmos cérebros, modos diferentes</div>
-      <p>Alinhamento também é especificação técnica. <b style="color:#fff">Gemma e GPT-OSS</b> vêm travados de fábrica — recusam qualquer coisa mais picante, o que é exatamente o que você quer pra uso seguro em família ou de frente pro cliente. <b style="color:#fff">Llama</b> fica no meio-termo; <b style="color:#fff">Mistral</b> é mais solto. E existem também modelos totalmente <em>neutros</em>, que você mesmo direciona — essa é a especialidade da Nous Research, com modelos abertos e steeráveis feitos sob medida pra esse tipo de controle. Escolha o temperamento certo pro trabalho certo.</p></div>
-    </div>
-    <div class="links">
-      <a class="lk" href="https://ollama.com" target="_blank" rel="noopener"><img src="raw-images/ollama.svg" alt="">ollama.com</a>
-      <a class="lk" href="https://ollama.com/library" target="_blank" rel="noopener">ver a biblioteca de modelos →</a>
-      <a class="lk" href="https://lmstudio.ai" target="_blank" rel="noopener"><img src="raw-images/lmstudio.svg" alt="">LM Studio (interface gráfica)</a>
-    </div>
-  </section>
-
-  <!-- 05 · O ESPECTRO DE PODER -->
-  <section class="sec">
-    <span class="sec-tag"><span class="dot"></span>05 · O contexto honesto</span>
-    <h2>Local é bom, <em>de verdade?</em></h2>
-    <p class="lead">Resposta honesta: um bom 30B local hoje faz o que a fronteira fazia não faz muito tempo — e pra rascunho, trabalho braçal e documento privado, isso já é a maior parte dos seus tokens.</p>
-    <div class="art" style="margin-top:26px;"><img src="raw-images/espectro.jpg" alt="O espectro de poder — de 8B até a fronteira"></div>
-    <div class="bands">
-      <div class="band" style="--bc:var(--dim)">
-        <span class="bk">local · pequeno</span><h5>O cérebro de bolso</h5>
-        <p>Bate-papo, rascunhos, resumos — rápido, leve, roda em quase qualquer coisa.</p>
-        <div class="blg"><img src="raw-images/meta.svg" alt="Llama"><img src="raw-images/gemma.svg" alt="Gemma"><img src="raw-images/mistral.svg" alt="Mistral"></div>
-      </div>
-      <div class="band" style="--bc:var(--green-2)">
-        <span class="bk">local · 30B ★</span><h5>A fronteira de ontem</h5>
-        <p>Código de verdade, agentes de verdade, contexto de verdade — na sua própria mesa, de graça.</p>
-        <div class="blg"><img src="raw-images/qwen.svg" alt="Qwen"><img src="raw-images/openai-white.svg" alt="GPT-OSS"></div>
-      </div>
-      <div class="band" style="--bc:var(--p4)">
-        <span class="bk">gigantes alugados</span><h5>Abertos, mas enormes</h5>
-        <p>GLM, DeepSeek, Kimi — fronteira de peso aberto. Grandes demais pra hospedar em casa; centavos pra alugar.</p>
-        <div class="blg"><img src="raw-images/glm.svg" alt="GLM"><img src="raw-images/deepseek.svg" alt="DeepSeek"><img src="raw-images/kimi.svg" alt="Kimi"></div>
-      </div>
-      <div class="band" style="--bc:var(--hermes-2)">
-        <span class="bk">nuvem de fronteira</span><h5>Os 5% mais difíceis</h5>
-        <p>Raciocínio profundo, arquitetura, bom gosto de design. Manda pra cá — e depois volta pra casa.</p>
-        <div class="blg"><img src="raw-images/openai-white.svg" alt="GPT-5.6"><img src="raw-images/claude.svg" alt="Claude"></div>
-      </div>
-    </div>
-    <div class="callout">
-      <span class="ic">⚖️</span>
-      <div><div class="h">Onde a linha realmente passa</div>
-      <p>Em raciocínio puro, a fronteira ainda ganha — é por isso que o modo Conectado existe. Mas a vantagem do local não é QI: é <b style="color:#fff">custo zero por token, zero saída de dados e nenhum limite de taxa</b>. Direcione por tarefa, não por lealdade.</p></div>
-    </div>
-  </section>
-
-  <!-- 06 · AS DUAS ARMADILHAS -->
-  <section class="sec">
-    <span class="sec-tag"><span class="dot"></span>06 · As duas armadilhas</span>
-    <h2>Por que acham que local é <em>ruim.</em></h2>
-    <p class="lead">Geralmente não é o modelo. É uma dessas duas configurações.</p>
-    <div class="traps">
-      <div class="trap">
-        <div class="th"><span class="ti">🧠</span><h5>O padrão de 4.096 tokens</h5></div>
-        <p>O contexto real do Qwen3-Coder é de <b>256K</b>. O Ollama entrega ele travado em <b>4K</b> — você está usando ~1,6% do cérebro e depois culpando o modelo.</p>
-        <div class="tbars"><div class="tb1"></div><div class="tb2"></div><div class="tl"><span>nativo · 256K</span><span style="color:var(--red)">padrão · 4K</span></div></div>
-        <div class="fix"><b>Fix:</b> <code>OLLAMA_CONTEXT_LENGTH=65536 ollama serve</code></div>
-      </div>
-      <div class="trap">
-        <div class="th"><span class="ti">🌊</span><h5>A parede do KV-cache</h5></div>
-        <p>Contexto consome memória: um 70B precisa de <b>~42GB só de cache a 128K</b>. Máquinas de consumidor batem o teto por volta de <b>32–64K utilizáveis</b> — é o cache que não cabe, não o modelo.</p>
-        <div class="fix"><b>Fix:</b> quantização do KV-cache — <code>q8_0</code> reduz o cache de memória praticamente pela metade, com perda mínima de qualidade.</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 07 · LIGANDO OS FIOS -->
-  <section class="sec">
-    <span class="sec-tag"><span class="dot"></span>07 · Ligando os fios</span>
-    <h2>Três comandos para uma <em>sala lacrada.</em></h2>
-    <p class="lead">O Ollama expõe um endpoint compatível com OpenAI em <b>localhost:11434</b> — seu agente pluga como qualquer outro cérebro. Nada sai da máquina.</p>
-    <div class="code">
-      <div class="bar"><div class="dots"><span></span><span></span><span></span></div><span class="t">terminal · local e grátis</span><button class="copy" data-copy="ollama pull qwen3-coder:30b-a3b
+<div class="top">
+<a href="https://inema.club/">← INEMA.CLUB · Início</a>
+<span class="badge">Kit Local · INEMA</span>
+</div>
+<div class="hero">
+<div class="eyebrow"><span class="l"></span>Rodando modelos locais · A Estratégia Local<span class="r"></span></div>
+<h1>O Laboratório Local.<br/><em>Grátis. Privado. Seu.</em></h1>
+<p class="sub">Qual modo rodar, o que sua máquina realmente aguenta, os modelos que valem o disco — e as duas armadilhas que fazem as pessoas acharem que local é ruim.</p>
+<div class="art"><img alt="O Laboratório Local — a estação do futuro" src="raw-images/hero.jpg"/></div>
+</div>
+<!-- 01 · A ESTRATÉGIA -->
+<section class="sec">
+<span class="sec-tag"><span class="dot"></span>01 · A estratégia</span>
+<h2>Escolha seu <em>modo</em> primeiro.</h2>
+<p class="lead">Local não é tudo ou nada. Decida o quanto sai da sua máquina — a escolha do modelo vem depois.</p>
+<div class="art" style="margin-top:26px;"><img alt="Escolha seu modo — cofre, conectado, nuvem" src="raw-images/modos.jpg"/></div>
+<div class="modes">
+<div class="mode" style="--mc:var(--amber)">
+<span class="me">🔒</span><h5>Cofre</h5><div class="mw">nada nunca sai</div>
+<p>100% local, funciona offline. Dados de cliente, contratos, saúde, trabalho ainda não lançado.</p>
+<span class="tag">trabalho sensível</span>
+</div>
+<div class="mode" style="--mc:var(--green-2)">
+<span class="me">🔌</span><h5>Conectado</h5><div class="mw">local primeiro, nuvem sob demanda</div>
+<p>O local cuida dos rascunhos e do trabalho pesado; você troca pra nuvem nas decisões mais difíceis.</p>
+<span class="tag">★ a estratégia do dia a dia</span>
+</div>
+<div class="mode" style="--mc:var(--hermes-2)">
+<span class="me">☁️</span><h5>Nuvem-primeiro</h5><div class="mw">local só para os 5% privados</div>
+<p>Nuvem por padrão; cai pro local só quando algo não pode sair da máquina.</p>
+<span class="tag">pouca vram</span>
+</div>
+</div>
+</section>
+<!-- 02 · O SLIDER -->
+<section class="sec">
+<span class="sec-tag"><span class="dot"></span>02 · Sua máquina</span>
+<h2>O que <em>sua</em> máquina realmente aguenta?</h2>
+<p class="lead">Arraste até a memória da sua máquina — em Mac com Apple Silicon, <b>memória unificada conta como VRAM</b>. Em PC, use a VRAM da sua GPU.</p>
+<div class="rig">
+<div class="rtop">
+<span class="rlab">sua memória · vram ou apple unificada</span>
+<span class="rgb"><span id="rgbv">24</span><span> GB</span></span>
+</div>
+<input aria-label="Memória da máquina" id="ram" max="7" min="0" step="1" type="range" value="2"/>
+<div class="ticks"><span>8</span><span>16</span><span>24</span><span>32</span><span>48</span><span>64</span><span>96</span><span>128</span></div>
+<div class="rtier"><span class="rtemo" id="rtemo"></span><span class="rtname" id="rtname"></span><span class="rtctx" id="rtctx"></span></div>
+<p class="rdesc" id="rdesc"></p>
+<div class="rchips" id="rchips"></div>
+<div class="timecmp">
+<div class="tc time"><span class="tk">⏳ máquina do tempo</span><div class="big">Tão potente quanto a fronteira de <em id="tmdate"></em></div><p class="note" id="tmnote"></p><span class="lg" id="tmlg"></span></div>
+<div class="tc now"><span class="tk">🎯 parente moderno mais próximo</span><div class="big" id="cmname"></div><p class="note" id="cmnote"></p><span class="lg" id="cmlg"></span></div>
+</div>
+<div class="rnote">Regra de bolso: o arquivo do modelo <b>mais</b> o cache de contexto moram na memória — deixe folga. Tamanhos assumem quantização Q4.</div>
+</div>
+</section>
+<!-- 03 · OS MELHORES DA CATEGORIA -->
+<section class="sec">
+<span class="sec-tag"><span class="dot"></span>03 · Os melhores da categoria</span>
+<h2>Três trabalhos. Três <em>campeões.</em></h2>
+<p class="lead">Não colecione modelos — designe-os. Clique num comando pra copiar.</p>
+<div class="champs">
+<div class="champ" style="--cc:#a78bfa">
+<span class="cnum">01</span>
+<span class="cico"><img alt="Qwen" src="raw-images/qwen.svg"/></span>
+<div class="ct"><span class="ck">o programador</span><b>Qwen3-Coder 30B</b><p>Qualidade de classe 32B na velocidade de um modelo pequeno. O rei do código local.</p></div>
+<div class="ccmd"><span class="pill">24GB · ~40 tok/s</span><code>ollama pull qwen3-coder:30b-a3b</code></div>
+</div>
+<div class="champ" style="--cc:#38bdf8">
+<span class="cnum">02</span>
+<span class="cico"><img alt="DeepSeek" src="raw-images/deepseek.svg"/></span>
+<div class="ct"><span class="ck">o raciocinador</span><b>DeepSeek-R1 14B</b><p>Cadeia de raciocínio de fronteira, destilada. Veja ele pensar antes de responder.</p></div>
+<div class="ccmd"><span class="pill">16GB · 32B / 70B acima</span><code>ollama pull deepseek-r1:14b</code></div>
+</div>
+<div class="champ" style="--cc:var(--green-2)">
+<span class="cnum">03</span>
+<span class="cico"><img alt="OpenAI" src="raw-images/openai-white.svg"/></span>
+<div class="ct"><span class="ck">o generalista</span><b>GPT-OSS 20B</b><p>Os pesos abertos da OpenAI. Bate-papo, ferramentas e agentes, no estilo da casa.</p></div>
+<div class="ccmd"><span class="pill">feito para 16GB</span><code>ollama pull gpt-oss:20b</code></div>
+</div>
+</div>
+</section>
+<!-- 04 · AS FAMÍLIAS -->
+<section class="sec">
+<span class="sec-tag"><span class="dot"></span>04 · O cenário local</span>
+<h2>Seis casas. Todo <em>tamanho.</em></h2>
+<p class="lead">Toda casa lança uma <b>escada de tamanhos</b> — o mesmo cérebro, escalado pra cima ou pra baixo. O Ollama é a porta de entrada pra todas elas. <b>Os pontos que cabem na sua máquina ficam acesos</b> (sincronizado com o slider acima) — clique em qualquer ponto pra copiar o comando de pull.</p>
+<div class="chart">
+<div class="chead"><span class="t">O cenário de modelos locais</span><span class="cswitch"><button class="cbtn on" data-view="sz">tamanho</button><button class="cbtn" data-view="pw">poder</button></span><span class="cmini"><span class="ml">seus GB</span><input aria-label="Memória da máquina" id="ram2" max="7" min="0" step="1" type="range" value="2"/><b id="rgbv2">24 GB</b></span></div>
+<div class="crow">
+<div class="cfam"><img alt="Qwen" src="raw-images/qwen.svg"/><b>Qwen3<span>pragmático · adora ferramentas</span></b></div>
+<div class="ctrack"><span class="csweet" style="left:62.6%;width:9.8%"></span>
+<span class="cdot" data-gb="8" data-tag="qwen3:4b" data-tip="qwen3:4b · cabe em 8GB+" style="--dc:#a78bfa;left:29%;width:10px;height:10px"></span>
+<span class="cdot" data-gb="8" data-tag="qwen3:8b" data-tip="qwen3:8b · cabe em 8GB+" style="--dc:#a78bfa;left:43.4%;width:12px;height:12px"></span>
+<span class="cdot" data-gb="16" data-tag="qwen3:14b" data-tip="qwen3:14b · cabe em 16GB+" style="--dc:#a78bfa;left:55.1%;width:14px;height:14px"></span>
+<span class="cdot star" data-gb="24" data-tag="qwen3-coder:30b-a3b" data-tip="★ qwen3-coder:30b-a3b · cabe em 24GB+" style="--dc:#a78bfa;left:71%;width:17px;height:17px"></span>
+<span class="cdot" data-gb="32" data-tag="qwen3:32b" data-tip="qwen3:32b · cabe em 32GB+" style="--dc:#a78bfa;left:74.4%;width:17px;height:17px"></span>
+</div>
+</div>
+<div class="crow">
+<div class="cfam"><img alt="DeepSeek" src="raw-images/deepseek.svg"/><b>DeepSeek-R1<span>pensa em voz alta</span></b></div>
+<div class="ctrack"><span class="csweet" style="left:62.6%;width:9.8%"></span>
+<span class="cdot" data-gb="8" data-tag="deepseek-r1:7b" data-tip="deepseek-r1:7b · cabe em 8GB+" style="--dc:#38bdf8;left:40.6%;width:12px;height:12px"></span>
+<span class="cdot" data-gb="16" data-tag="deepseek-r1:14b" data-tip="deepseek-r1:14b · cabe em 16GB+" style="--dc:#38bdf8;left:55.1%;width:14px;height:14px"></span>
+<span class="cdot" data-gb="32" data-tag="deepseek-r1:32b" data-tip="deepseek-r1:32b · cabe em 32GB+" style="--dc:#38bdf8;left:72.4%;width:17px;height:17px"></span>
+<span class="cdot" data-gb="48" data-tag="deepseek-r1:70b" data-tip="deepseek-r1:70b · cabe em 48GB+" style="--dc:#38bdf8;left:88.7%;width:21px;height:21px"></span>
+</div>
+</div>
+<div class="crow">
+<div class="cfam"><img alt="OpenAI" src="raw-images/openai-white.svg"/><b>GPT-OSS<span>genes de fronteira · rígido</span></b></div>
+<div class="ctrack"><span class="csweet" style="left:62.6%;width:9.8%"></span>
+<span class="cdot" data-gb="16" data-tag="gpt-oss:20b" data-tip="gpt-oss:20b · cabe em 16GB+" style="--dc:#4ade80;left:62.6%;width:17px;height:17px"></span>
+<span class="cdot" data-gb="96" data-tag="gpt-oss:120b" data-tip="gpt-oss:120b · cabe em ~80GB+" style="--dc:#4ade80;left:98%;width:25px;height:25px"></span>
+</div>
+</div>
+<div class="crow">
+<div class="cfam"><img alt="Gemma" src="raw-images/gemma.svg"/><b>Gemma 3<span>polido · o mais seguro</span></b></div>
+<div class="ctrack"><span class="csweet" style="left:62.6%;width:9.8%"></span>
+<span class="cdot" data-gb="8" data-tag="gemma3:1b" data-tip="gemma3:1b · roda em qualquer lugar" style="--dc:#2dd4bf;left:2%;width:10px;height:10px"></span>
+<span class="cdot" data-gb="8" data-tag="gemma3:4b" data-tip="gemma3:4b · cabe em 8GB+" style="--dc:#2dd4bf;left:29%;width:10px;height:10px"></span>
+<span class="cdot" data-gb="16" data-tag="gemma3:12b" data-tip="gemma3:12b · cabe em 16GB+" style="--dc:#2dd4bf;left:51.9%;width:14px;height:14px"></span>
+<span class="cdot" data-gb="24" data-tag="gemma3:27b" data-tip="gemma3:27b · cabe em 24GB+" style="--dc:#2dd4bf;left:68.8%;width:17px;height:17px"></span>
+</div>
+</div>
+<div class="crow">
+<div class="cfam"><img alt="Meta" src="raw-images/meta.svg"/><b>Llama<span>o padrão · meio-termo</span></b></div>
+<div class="ctrack"><span class="csweet" style="left:62.6%;width:9.8%"></span>
+<span class="cdot" data-gb="8" data-tag="llama3.2:1b" data-tip="llama3.2:1b · roda em qualquer lugar" style="--dc:#60a5fa;left:2%;width:10px;height:10px"></span>
+<span class="cdot" data-gb="8" data-tag="llama3.2:3b" data-tip="llama3.2:3b · cabe em 8GB+" style="--dc:#60a5fa;left:22.9%;width:10px;height:10px"></span>
+<span class="cdot" data-gb="8" data-tag="llama3.1:8b" data-tip="llama3.1:8b · cabe em 8GB+" style="--dc:#60a5fa;left:43.4%;width:12px;height:12px"></span>
+<span class="cdot" data-gb="48" data-tag="llama3.3:70b" data-tip="llama3.3:70b · cabe em 48GB+" style="--dc:#60a5fa;left:88.7%;width:21px;height:21px"></span>
+</div>
+</div>
+<div class="crow" style="border-bottom:none;">
+<div class="cfam"><img alt="Mistral" src="raw-images/mistral.svg"/><b>Mistral<span>enxuto · relaxado</span></b></div>
+<div class="ctrack"><span class="csweet" style="left:62.6%;width:9.8%"></span>
+<span class="cdot" data-gb="8" data-tag="mistral:7b" data-tip="mistral:7b · cabe em 8GB+" style="--dc:#f0b441;left:40.6%;width:12px;height:12px"></span>
+<span class="cdot" data-gb="16" data-tag="mistral-nemo" data-tip="mistral-nemo 12B · cabe em 16GB+" style="--dc:#f0b441;left:51.9%;width:14px;height:14px"></span>
+<span class="cdot" data-gb="24" data-tag="mistral-small:24b" data-tip="mistral-small:24b · cabe em 24GB+" style="--dc:#f0b441;left:66.4%;width:17px;height:17px"></span>
+</div>
+</div>
+<div class="caxisrow"><span></span><div class="caxis szax">
+<span style="left:2%">1B</span><span style="left:43.4%">8B</span><span style="left:71%">30B</span><span style="left:88.7%">70B</span><span style="left:98%">120B</span>
+</div><div class="caxis pwax">
+<span style="left:7%">papo rápido</span><span style="left:35%">trabalho de verdade</span><span style="left:64%">nível agente</span><span style="left:90%">quase-fronteira</span>
+</div></div>
+<div class="cfoot"><span>tamanho do ponto = parâmetros · <span style="color:var(--green-2)">faixa verde</span> = alcance da sua máquina (arraste o slider) · ★ = o coder</span><span class="sync" id="csync"></span></div>
+</div>
+<div class="callout">
+<span class="ic">🎭</span>
+<div><div class="h">Mesmos cérebros, modos diferentes</div>
+<p>Alinhamento também é especificação técnica. <b style="color:#fff">Gemma e GPT-OSS</b> vêm travados de fábrica — recusam qualquer coisa mais picante, o que é exatamente o que você quer pra uso seguro em família ou de frente pro cliente. <b style="color:#fff">Llama</b> fica no meio-termo; <b style="color:#fff">Mistral</b> é mais solto. E existem também modelos totalmente <em>neutros</em>, que você mesmo direciona — essa é a especialidade da Nous Research, com modelos abertos e steeráveis feitos sob medida pra esse tipo de controle. Escolha o temperamento certo pro trabalho certo.</p></div>
+</div>
+<div class="links">
+<a class="lk" href="https://ollama.com" rel="noopener" target="_blank"><img alt="" src="raw-images/ollama.svg"/>ollama.com</a>
+<a class="lk" href="https://ollama.com/library" rel="noopener" target="_blank">ver a biblioteca de modelos →</a>
+<a class="lk" href="https://lmstudio.ai" rel="noopener" target="_blank"><img alt="" src="raw-images/lmstudio.svg"/>LM Studio (interface gráfica)</a>
+</div>
+</section>
+<!-- 05 · O ESPECTRO DE PODER -->
+<section class="sec">
+<span class="sec-tag"><span class="dot"></span>05 · O contexto honesto</span>
+<h2>Local é bom, <em>de verdade?</em></h2>
+<p class="lead">Resposta honesta: um bom 30B local hoje faz o que a fronteira fazia não faz muito tempo — e pra rascunho, trabalho braçal e documento privado, isso já é a maior parte dos seus tokens.</p>
+<div class="art" style="margin-top:26px;"><img alt="O espectro de poder — de 8B até a fronteira" src="raw-images/espectro.jpg"/></div>
+<div class="bands">
+<div class="band" style="--bc:var(--dim)">
+<span class="bk">local · pequeno</span><h5>O cérebro de bolso</h5>
+<p>Bate-papo, rascunhos, resumos — rápido, leve, roda em quase qualquer coisa.</p>
+<div class="blg"><img alt="Llama" src="raw-images/meta.svg"/><img alt="Gemma" src="raw-images/gemma.svg"/><img alt="Mistral" src="raw-images/mistral.svg"/></div>
+</div>
+<div class="band" style="--bc:var(--green-2)">
+<span class="bk">local · 30B ★</span><h5>A fronteira de ontem</h5>
+<p>Código de verdade, agentes de verdade, contexto de verdade — na sua própria mesa, de graça.</p>
+<div class="blg"><img alt="Qwen" src="raw-images/qwen.svg"/><img alt="GPT-OSS" src="raw-images/openai-white.svg"/></div>
+</div>
+<div class="band" style="--bc:var(--p4)">
+<span class="bk">gigantes alugados</span><h5>Abertos, mas enormes</h5>
+<p>GLM, DeepSeek, Kimi — fronteira de peso aberto. Grandes demais pra hospedar em casa; centavos pra alugar.</p>
+<div class="blg"><img alt="GLM" src="raw-images/glm.svg"/><img alt="DeepSeek" src="raw-images/deepseek.svg"/><img alt="Kimi" src="raw-images/kimi.svg"/></div>
+</div>
+<div class="band" style="--bc:var(--hermes-2)">
+<span class="bk">nuvem de fronteira</span><h5>Os 5% mais difíceis</h5>
+<p>Raciocínio profundo, arquitetura, bom gosto de design. Manda pra cá — e depois volta pra casa.</p>
+<div class="blg"><img alt="GPT-5.6" src="raw-images/openai-white.svg"/><img alt="Claude" src="raw-images/claude.svg"/></div>
+</div>
+</div>
+<div class="callout">
+<span class="ic">⚖️</span>
+<div><div class="h">Onde a linha realmente passa</div>
+<p>Em raciocínio puro, a fronteira ainda ganha — é por isso que o modo Conectado existe. Mas a vantagem do local não é QI: é <b style="color:#fff">custo zero por token, zero saída de dados e nenhum limite de taxa</b>. Direcione por tarefa, não por lealdade.</p></div>
+</div>
+</section>
+<!-- 06 · AS DUAS ARMADILHAS -->
+<section class="sec">
+<span class="sec-tag"><span class="dot"></span>06 · As duas armadilhas</span>
+<h2>Por que acham que local é <em>ruim.</em></h2>
+<p class="lead">Geralmente não é o modelo. É uma dessas duas configurações.</p>
+<div class="traps">
+<div class="trap">
+<div class="th"><span class="ti">🧠</span><h5>O padrão de 4.096 tokens</h5></div>
+<p>O contexto real do Qwen3-Coder é de <b>256K</b>. O Ollama entrega ele travado em <b>4K</b> — você está usando ~1,6% do cérebro e depois culpando o modelo.</p>
+<div class="tbars"><div class="tb1"></div><div class="tb2"></div><div class="tl"><span>nativo · 256K</span><span style="color:var(--red)">padrão · 4K</span></div></div>
+<div class="fix"><b>Fix:</b> <code>OLLAMA_CONTEXT_LENGTH=65536 ollama serve</code></div>
+</div>
+<div class="trap">
+<div class="th"><span class="ti">🌊</span><h5>A parede do KV-cache</h5></div>
+<p>Contexto consome memória: um 70B precisa de <b>~42GB só de cache a 128K</b>. Máquinas de consumidor batem o teto por volta de <b>32–64K utilizáveis</b> — é o cache que não cabe, não o modelo.</p>
+<div class="fix"><b>Fix:</b> quantização do KV-cache — <code>q8_0</code> reduz o cache de memória praticamente pela metade, com perda mínima de qualidade.</div>
+</div>
+</div>
+</section>
+<!-- 07 · LIGANDO OS FIOS -->
+<section class="sec">
+<span class="sec-tag"><span class="dot"></span>07 · Ligando os fios</span>
+<h2>Três comandos para uma <em>sala lacrada.</em></h2>
+<p class="lead">O Ollama expõe um endpoint compatível com OpenAI em <b>localhost:11434</b> — seu agente pluga como qualquer outro cérebro. Nada sai da máquina.</p>
+<div class="code">
+<div class="bar"><div class="dots"><span></span><span></span><span></span></div><span class="t">terminal · local e grátis</span><button class="copy" data-copy="ollama pull qwen3-coder:30b-a3b
 OLLAMA_CONTEXT_LENGTH=65536 ollama serve
-<seu-cliente-openai-compatible> --model qwen3-coder:30b-a3b --base-url http://localhost:11434/v1">copiar</button></div>
-      <pre><span class="cmt"># 1 · puxe o coder</span>
+&lt;seu-cliente-openai-compatible&gt; --model qwen3-coder:30b-a3b --base-url http://localhost:11434/v1">copiar</button></div>
+<pre><span class="cmt"># 1 · puxe o coder</span>
 <span class="pr">$</span> ollama pull qwen3-coder:30b-a3b
 
 <span class="cmt"># 2 · suba o contexto ANTES de julgar</span>
@@ -482,18 +474,16 @@ OLLAMA_CONTEXT_LENGTH=65536 ollama serve
 
 <span class="cmt"># 3 · aponte seu cliente pra localhost</span>
 <span class="pr">$</span> <span class="st">&lt;seu-cliente-openai-compatible&gt;</span> --model <span class="st">qwen3-coder:30b-a3b</span> <span class="fl">--base-url</span> http://localhost:11434/v1</pre>
-    </div>
-    <div class="links">
-      <a class="lk" href="https://ollama.com/download" target="_blank" rel="noopener"><img src="raw-images/ollama.svg" alt="">baixar Ollama</a>
-      <a class="lk" href="https://lmstudio.ai" target="_blank" rel="noopener"><img src="raw-images/lmstudio.svg" alt="">prefere interface gráfica? LM Studio</a>
-    </div>
-    <div class="art"><img src="raw-images/final.jpg" alt="Sua máquina. Sua mente."></div>
-    <div class="sowhat"><span class="swl">E daí →</span><p>Hoje à noite: arraste o slider até sua máquina, puxe os <b>modelos recomendados</b>, e suba o contexto <em>antes</em> de julgar qualquer coisa. Seu laboratório é grátis, privado e está sempre aberto.</p></div>
-  </section>
-
-  <div class="foot">INEMA.CLUB · Kit bônus do Capítulo 3 · <a href="https://inema.club/">inema.club</a></div>
 </div>
-
+<div class="links">
+<a class="lk" href="https://ollama.com/download" rel="noopener" target="_blank"><img alt="" src="raw-images/ollama.svg"/>baixar Ollama</a>
+<a class="lk" href="https://lmstudio.ai" rel="noopener" target="_blank"><img alt="" src="raw-images/lmstudio.svg"/>prefere interface gráfica? LM Studio</a>
+</div>
+<div class="art"><img alt="Sua máquina. Sua mente." src="raw-images/final.jpg"/></div>
+<div class="sowhat"><span class="swl">E daí →</span><p>Hoje à noite: arraste o slider até sua máquina, puxe os <b>modelos recomendados</b>, e suba o contexto <em>antes</em> de julgar qualquer coisa. Seu laboratório é grátis, privado e está sempre aberto.</p></div>
+</section>
+<div class="foot">INEMA.CLUB · Kit bônus do Capítulo 3 · <a href="https://inema.club/">inema.club</a></div>
+</div>
 <script>
   // ── o slider principal ──
   var GBS = [8, 16, 24, 32, 48, 64, 96, 128];
